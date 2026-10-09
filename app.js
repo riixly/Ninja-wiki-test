@@ -106,6 +106,7 @@ function setFilter(next) {
 }
 
 function openScroll(id, trigger = null, updateHistory = true) {
+  if (document.getElementById('entrance')) return;
   const item = scrolls.find(s => s.id === id);
   if (!item || isClosing) return;
   playScrollSound();
@@ -222,6 +223,7 @@ document.addEventListener('keydown', event => {
   }
 });
 function syncHash() {
+  if (document.getElementById('entrance')) return;
   const id = window.location.hash.slice(1);
   if (scrolls.some(s => s.id === id)) {
     if (id !== currentScroll) openScroll(id, null, false);
@@ -229,6 +231,7 @@ function syncHash() {
 }
 window.addEventListener('hashchange', syncHash);
 window.addEventListener('popstate', syncHash);
+document.addEventListener('ninja:entered', syncHash);
 
 
 /* Shinobi Radio — 12% volume on first visit, continuous track looping. */
@@ -279,6 +282,8 @@ function updateMusicProgress() {
   musicClock.textContent = `${musicTime(music.currentTime)} / ${duration ? musicTime(duration) : '--:--'}`;
 }
 function startMusic() {
+  // Never call play() while the entrance is waiting for its Begin click.
+  if (window.ninjaEntranceUnlocked !== true) return;
   if (music.error) return;
   const result = music.play();
   if (result && typeof result.catch === 'function') {
@@ -291,6 +296,11 @@ function startMusic() {
     });
   }
 }
+// The button is the ONLY action allowed to start music from the entrance.
+document.addEventListener('ninja:begin', () => {
+  pendingMusicAutoplay = false;
+  startMusic();
+});
 musicPlay.addEventListener('click', () => {
   pendingMusicAutoplay = false;
   if (music.paused) startMusic();
@@ -389,8 +399,7 @@ document.addEventListener('keydown', event => {
 });
 updateMusicUI();
 updateMusicProgress();
-// Autoplay is best-effort only; audio will wait for a user gesture when blocked.
-startMusic();
+// No automatic music on page load. Entrance click is required to start playback.
 
 // Low-cost drifting mist: capped DPR, 30 fps, paused in background tabs.
 const canvas = $('#mist');
