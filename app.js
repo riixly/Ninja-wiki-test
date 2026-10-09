@@ -273,10 +273,10 @@ function updateMusicUI() {
   musicVolume.style.setProperty('--fill', `${Math.round(music.volume * 100)}%`);
 }
 function updateMusicProgress() {
-  const duration = Number.isFinite(music.duration) ? music.duration : 41;
+  const duration = Number.isFinite(music.duration) ? music.duration : 0;
   musicSeek.value = String(duration > 0 ? music.currentTime / duration * 100 : 0);
   musicSeek.style.setProperty('--fill', `${musicSeek.value}%`);
-  musicClock.textContent = `${musicTime(music.currentTime)} / ${musicTime(duration)}`;
+  musicClock.textContent = `${musicTime(music.currentTime)} / ${duration ? musicTime(duration) : '--:--'}`;
 }
 function startMusic() {
   if (music.error) return;
@@ -323,6 +323,62 @@ music.addEventListener('error', () => {
   musicPlayer.classList.add('music-missing');
   updateMusicUI();
 });
+
+/* Switch to the matching soundtrack when a theme changes. */
+const themeToggle = $('#theme-toggle');
+const themeColor = document.querySelector('meta[name="theme-color"]');
+const musicTitle = $('.music-title');
+const tracks = {
+  normal: {
+    src: '/naruto%20funk%20by%20altac0untb0y.mp3',
+    title: 'naruto funk by altac0untb0y'
+  },
+  akatsuki: {
+    src: '/Naruto_Shippuden_OST_-_Akatsuki_Theme_2_(mp3.pm).mp3',
+    title: 'Akatsuki Theme 2'
+  }
+};
+let activeTheme = document.documentElement.dataset.theme === 'akatsuki' ? 'akatsuki' : 'normal';
+
+function applyTheme(nextTheme, switchSoundtrack = true) {
+  const isNight = nextTheme === 'akatsuki';
+  const next = isNight ? 'akatsuki' : 'normal';
+  const wasPlaying = !music.paused && !music.ended;
+  const shouldPlay = wasPlaying || (switchSoundtrack && pendingMusicAutoplay);
+  const changed = next !== activeTheme || music.getAttribute('src') !== tracks[next].src;
+  activeTheme = next;
+  if (isNight) document.documentElement.dataset.theme = 'akatsuki';
+  else delete document.documentElement.dataset.theme;
+  themeColor.setAttribute('content', isNight ? '#090506' : '#07152b');
+
+  themeToggle.setAttribute('aria-pressed', String(isNight));
+  themeToggle.setAttribute('aria-label', isNight ? 'Return to the blue theme' : 'Activate red and black night mode');
+  themeToggle.setAttribute('title', isNight ? 'Return to blue theme' : 'Activate night mode');
+  themeToggle.querySelector('.theme-toggle-label').textContent = isNight ? 'BLUE MODE' : 'NIGHT MODE';
+  musicTitle.textContent = tracks[next].title;
+
+  if (changed) {
+    music.pause();
+    music.setAttribute('src', tracks[next].src);
+    music.load();
+    musicPlayer.classList.remove('music-missing');
+    musicSeek.value = '0';
+    musicSeek.style.setProperty('--fill', '0%');
+    musicClock.textContent = '0:00 / --:--';
+    musicStatus.textContent = 'Selected ' + tracks[next].title;
+    if (switchSoundtrack && shouldPlay) startMusic();
+    updateMusicUI();
+  }
+}
+
+themeToggle.addEventListener('click', () => {
+  const next = activeTheme === 'akatsuki' ? 'normal' : 'akatsuki';
+  try { localStorage.setItem('ninja-theme', next); } catch { /* Private browsing. */ }
+  applyTheme(next);
+});
+// Apply the stored theme's music before attempting startup playback.
+applyTheme(activeTheme, false);
+
 const tryMusicAfterGesture = event => {
   if (!pendingMusicAutoplay || event.target.closest('.music-player')) return;
   startMusic();
@@ -358,7 +414,9 @@ function drawMist(time) {
     if (wisp.x > 1.25) wisp.x = -.25;
     const x = wisp.x * width, y = wisp.y * height + Math.sin(time / 6500 + wisp.y * 8) * 20;
     const fog = context.createRadialGradient(x, y, 0, x, y, wisp.r);
-    fog.addColorStop(0, 'rgba(176,188,164,0.045)'); fog.addColorStop(1, 'rgba(176,188,164,0)');
+    const redNight = activeTheme === 'akatsuki';
+    fog.addColorStop(0, redNight ? 'rgba(190,33,51,0.10)' : 'rgba(176,188,164,0.045)');
+    fog.addColorStop(1, redNight ? 'rgba(190,33,51,0)' : 'rgba(176,188,164,0)');
     context.fillStyle = fog;
     context.beginPath(); context.ellipse(x, y, wisp.r * 1.6, wisp.r * .42, 0, 0, Math.PI * 2); context.fill();
   }
