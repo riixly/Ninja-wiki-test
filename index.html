@@ -13,6 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&amp;family=Kaushan+Script&amp;display=swap" rel="stylesheet">
   <script src="/theme-boot.js"></script>
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/entrance.css">
+  <script src="/entrance.js" defer></script>
   <script type="module" src="/app.js"></script>
 </head>
 <body>
@@ -29,6 +31,38 @@
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol>
   </defs></svg>
   <a class="skip-link" href="#scroll-library">Skip to scrolls</a>
+
+  <section id="entrance" class="entrance" role="dialog" aria-modal="true" aria-labelledby="entrance-title">
+    <div class="entrance-curtain entrance-curtain-left" aria-hidden="true"></div>
+    <div class="entrance-curtain entrance-curtain-right" aria-hidden="true"></div>
+    <div class="entrance-haze" aria-hidden="true">
+      <span class="entrance-fog fog-1"></span>
+      <span class="entrance-fog fog-2"></span>
+      <span class="entrance-fog fog-3"></span>
+      <span class="entrance-fog fog-4"></span>
+      <span class="entrance-fog fog-5"></span>
+      <span class="entrance-fog fog-6"></span>
+      <span class="entrance-fog fog-7"></span>
+      <span class="entrance-fog fog-8"></span>
+      <span class="entrance-fog fog-9"></span>
+    </div>
+    <div class="entrance-burst" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="entrance-content">
+      <div class="entrance-crest" aria-hidden="true"><span>忍</span></div>
+      <p class="entrance-overline">THE SHINOBI ARCHIVE</p>
+      <h2 id="entrance-title">Your path begins here.</h2>
+      <p class="entrance-description">Every ninja has a beginning. Discover yours.</p>
+      <button id="entrance-begin" class="entrance-begin" type="button">
+        <span>Begin Your Ninja Destiny</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+      </button>
+      <p class="entrance-instruction">PRESS TO ENTER THE ARCHIVE</p>
+    </div>
+    <div class="entrance-edge entrance-edge-top" aria-hidden="true"></div>
+    <div class="entrance-edge entrance-edge-bottom" aria-hidden="true"></div>
+  </section>
   <div class="dojo-scene" aria-hidden="true">
     <div class="sky-stars"></div><div class="sky-ring"></div><div class="ridge-glow"></div><div class="vignette"></div>
   </div>
