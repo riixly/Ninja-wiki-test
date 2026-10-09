@@ -6,6 +6,12 @@ The supplied `freesound_community-headband-tighten-96568.mp3` is used for openin
 
 The two published scrolls are the verified Chunin Exams guide and Shinobi Fishing Macro v4 for Windows. Unverified starter sections were removed until accurate in-game details are available.
 
+## Animated entrance
+
+Every fresh page load opens a full-screen smoky entrance with a **Begin Your Ninja Destiny** button. The button runs a smoke burst and curtain reveal, with a shorter transition when reduced motion or Effects off is set. The entrance uses the selected blue or red/black theme automatically.
+
+The wiki stays locked until Begin is pressed. Both music tracks are deliberately **silent before Begin**, including on returning visits and deep links; pressing Begin is the only action that unlocks and starts the theme's soundtrack. After the reveal, linked articles can open as normal. Entrance assets are `entrance.css` and `entrance.js`, both copied by the build script.
+
 ## Theme toggle
 
 The prominent moon button in the header switches between the regular blue shinobi theme and a red-and-black Akatsuki night theme. The selected theme is stored in the browser as `ninja-theme` and restored on return visits by `theme-boot.js` before CSS loads.
