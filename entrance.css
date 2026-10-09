@@ -219,3 +219,10 @@ html[data-theme="akatsuki"] .entrance-burst span{
   .entrance.is-revealing .entrance-curtain-left,.entrance.is-revealing .entrance-curtain-right,
   .entrance.is-revealing .entrance-burst span{animation:none!important}
 }
+
+/* Respect the site's own Effects off control as well as the OS setting. */
+.effects-off .entrance-fog,.effects-off .entrance-crest{animation:none!important}
+.effects-off .entrance.is-revealing{animation:entrance-clear .14s linear both}
+.effects-off .entrance.is-revealing .entrance-content,
+.effects-off .entrance.is-revealing .entrance-curtain,
+.effects-off .entrance.is-revealing .entrance-burst span{animation:none!important}
