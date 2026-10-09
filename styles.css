@@ -631,298 +631,231 @@ footer p,footer button{font-size:12px}
   .music-title{font-size:11px}
 }
 
-/* ===========================================================
-   SHINOBI SCROLLS V3 — INK ON A WRAPPED CLOTH CYLINDER
-   Simple matte fabric, narrow bindings, no floating white panel.
-   =========================================================== */
-.scroll-grid {
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:32px 42px;
-  max-width:940px;
-  margin:40px auto 48px;
-  align-items:start;
+
+/* =============================================================
+   SHINOBI SCROLLS V4
+   The illustrated closed/open SVGs ARE the scrolls. No CSS rods,
+   end caps, white panels, band pieces or pieced-together shells.
+   ============================================================= */
+.scroll-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;gap:32px 34px;
+  max-width:1050px;margin:38px auto 55px;
 }
-.scroll-slot { position:relative;min-width:0;isolation:isolate; }
-.scroll-slot .scroll-card {
-  position:relative;
-  display:block;
-  width:100%;
-  min-height:130px;
-  padding:4px 22px;
-  border:0;
-  isolation:isolate;
-  background:transparent;
-  text-align:center;
-  filter:drop-shadow(0 9px 8px rgba(0,9,24,.32));
-  transition:transform .2s ease, filter .2s ease;
+.scroll-slot{position:relative;min-width:0;isolation:isolate}
+.scroll-slot .scroll-card{
+  display:block;width:100%;position:relative;isolation:isolate;
+  padding:0;border:0;background:none;color:#e6f4e3;text-align:center;
+  filter:drop-shadow(0 10px 15px rgba(0,9,27,.25));
+  transition:filter .2s ease,transform .2s ease;
 }
-.scroll-slot .scroll-card:hover {
+.scroll-slot .scroll-card:hover{
   transform:translateY(-3px);
-  filter:drop-shadow(0 12px 10px rgba(0,9,24,.43));
+  filter:drop-shadow(0 14px 18px rgba(0,9,27,.43));
 }
-.scroll-slot .scroll-card:focus-visible { outline:2px solid #b7f0c5;outline-offset:4px; }
-/* Flat cloth body — subtly shaded like a real rolled scroll, not plastic. */
-.scroll-slot .card-paper {
-  position:relative;
-  isolation:isolate;
-  display:block;
-  height:119px;
-  min-height:0;
-  margin:0;
-  padding:0;
-  overflow:hidden;
-  border:3px solid #102d38;
-  border-radius:32px / 45%;
-  background:
-    repeating-linear-gradient(0deg,rgba(21,62,55,.018) 0 2px,transparent 2px 6px),
-    linear-gradient(180deg,#a8d7ac 0%,#90c9a4 20%,#79b99f 52%,#539382 81%,#376b69 100%);
-  box-shadow:
-    inset 0 4px 3px rgba(238,255,215,.23),
-    inset 0 -7px 6px rgba(9,51,61,.31),
-    0 2px 0 rgba(3,18,29,.65);
-  transition:height .5s cubic-bezier(.18,.85,.24,1),border-radius .24s ease;
+.scroll-slot .scroll-card:focus-visible{outline:3px solid #b5f7c5;outline-offset:4px;border-radius:12px}
+/* Prevent ALL legacy handmade CSS scroll details from showing. */
+.scroll-slot .scroll-card::before,.scroll-slot .scroll-card::after,
+.scroll-slot .card-paper::before,.scroll-slot .card-paper::after{
+  content:none!important;display:none!important;
+  border:0!important;box-shadow:none!important;
 }
-/* The old bright raised panel and dashed border are deliberately removed. */
-.scroll-slot .card-paper::before,
-.scroll-slot .card-paper::after,
-.scroll-slot .scroll-card.unrolled .card-paper::before,
-.scroll-slot .scroll-card.unrolled .card-paper::after {
-  content:none!important;
-  display:none!important;
-  transition:none!important;
-  animation:none!important;
+.scroll-slot .card-paper{
+  position:relative;display:block;
+  width:100%;height:160px;min-height:0;margin:0;padding:0;
+  isolation:isolate;overflow:visible;
+  background:transparent;border:0;border-radius:0;box-shadow:none;
+  transition:height .78s cubic-bezier(.2,.8,.2,1);
 }
-/* Narrow cloth binding bands following the curved shell at both ends. */
-.scroll-slot .scroll-binding {
-  position:absolute;
-  display:block;
-  z-index:1;
-  top:3px;
-  bottom:3px;
-  left:8px;
-  width:23px;
-  border:0;
-  border-left:2px solid #173f4b;
-  border-right:2px solid #173f4b;
-  border-radius:12px 2px 2px 12px / 38% 4% 4% 38%;
-  background:repeating-linear-gradient(180deg,
-    #365f79 0 13px,#365f79 13px 15px,
-    #bad9a7 15px 28px,#bad9a7 28px 30px,
-    #498f8f 30px 43px,#498f8f 43px 45px);
-  box-shadow:inset 2px 0 4px #e7ffda48,inset -2px 0 3px #102c4882;
-  pointer-events:none;
-  transition:none;
+.scroll-slot .scroll-art{
+  position:absolute;display:block;inset:0;
+  background-position:center;background-repeat:no-repeat;
+  background-size:100% 100%;
+  pointer-events:none;z-index:1;
+  transition:transform .7s cubic-bezier(.18,.82,.2,1),opacity .26s ease;
 }
-.scroll-slot .scroll-binding.binding-right {
-  left:auto;
-  right:8px;
-  border-radius:2px 12px 12px 2px / 4% 38% 38% 4%;
-  background:repeating-linear-gradient(180deg,
-    #498f8f 0 13px,#498f8f 13px 15px,
-    #bad9a7 15px 28px,#bad9a7 28px 30px,
-    #365f79 30px 43px,#365f79 43px 45px);
+.scroll-slot .scroll-art-closed{
+  background-image:url('/illustrated-scroll-closed.svg');
+  opacity:1;transform:scale(1);
 }
-/* End disks are small wooden/stone plugs, not chrome poles. */
-.scroll-slot .scroll-card::before,
-.scroll-slot .scroll-card::after {
-  content:"";
-  position:absolute;
-  top:50%;
-  left:4px;
-  right:auto;
-  width:30px;
-  height:60px;
-  z-index:3;
-  border:3px solid #102b3b;
-  border-radius:50%;
-  background:
-    radial-gradient(ellipse at 43% 43%,
-    #d0e5b5 0 17%,#7cb7aa 19% 40%,#39677c 45% 74%,#163d55 76%);
-  box-shadow:inset -3px -1px 4px #0b2c3b6e,1px 2px 0 #071b2b;
-  transform:translateY(-50%);
-  filter:none;
-  bottom:auto;
-  pointer-events:none;
-  transition:none;
+.scroll-slot .scroll-art-open{
+  background-image:url('/illustrated-scroll-open.svg');
+  opacity:0;transform:scaleY(.09) scaleX(.88);
+  transform-origin:center;
 }
-.scroll-slot .scroll-card::after {
-  left:auto;
-  right:4px;
-  transform:translateY(-50%);
-  background:radial-gradient(ellipse at 43% 43%,
-    #d2e7b5 0 16%,#8ac4ad 18% 41%,#417681 46% 74%,#163d55 76%);
+.scroll-slot .rolled-face,
+.scroll-slot .unrolled-face{
+  position:absolute;min-width:0;
+  background:none;border:0;box-shadow:none;
+  pointer-events:none;z-index:2;
 }
-/* Printed ink sits directly on the center wrap: no light-colored rectangle. */
-.scroll-slot .rolled-face {
-  position:absolute;
-  inset:0 34px;
-  z-index:2;
-  padding:11px 3px 12px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:2px;
-  min-width:0;
-  opacity:1;
-  visibility:visible;
-  transform:none;
+.scroll-slot .rolled-face{
+  inset:6% 24%;padding:0;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;
+  visibility:visible;opacity:1;transform:none;
+  transition:opacity .15s ease,visibility 0s linear .15s;
 }
-.scroll-slot .rolled-mark {
-  display:grid;
-  place-items:center;
-  width:24px;
-  height:24px;
-  border:0;
-  border-radius:0;
-  padding:0;
-  margin:0 0 1px;
-  background:transparent;
-  box-shadow:none;
-  color:#214c46;
+.scroll-slot .rolled-mark{
+  width:25px;height:25px;border:0;margin:0;
+  display:grid;place-items:center;
+  background:none;color:#d4f2d4;border-radius:0;box-shadow:none;
 }
-.scroll-slot .rolled-mark svg { width:21px;height:21px;stroke-width:2; }
-.scroll-slot .rolled-title {
-  display:block;
-  width:100%;
-  text-align:center;
-  margin:0;
-  font:400 clamp(20px,2.2vw,28px)/1.2 var(--font-brush);
-  color:#142f32;
-  letter-spacing:0;
-  text-shadow:0 1px 0 #c8e4b865;
-  overflow-wrap:normal;
+.scroll-slot .rolled-mark svg{width:23px;height:23px;stroke-width:2}
+.scroll-slot .rolled-title{
+  display:block;font:400 clamp(21px,2.3vw,30px)/1.22 var(--font-brush);
+  letter-spacing:0;max-width:100%;color:#f5f7d9;
+  text-shadow:0 2px 1px #071e32,0 0 8px #12455a;
+  text-align:center;overflow-wrap:normal;
 }
-.scroll-slot .rolled-hint {
-  display:block;
-  text-align:center;
-  font:700 10px/1.2 var(--font-ink);
-  color:#315951;
-  letter-spacing:.2px;
+.scroll-slot .rolled-hint{
+  display:block;font:700 10px/1.2 var(--font-ink);
+  letter-spacing:.6px;color:#cee6d5;text-align:center;
+  text-shadow:0 1px 1px #0b3044;
 }
-/* Fold out on first click, then click again to see the full guide. */
-.scroll-slot .scroll-card.unrolled {
-  min-height:0;
-  padding:2px 22px;
+.scroll-slot .unrolled-face{
+  inset:20% 17% 19%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:7px 13px 18px;overflow:hidden;text-align:center;
+  opacity:0;visibility:hidden;transform:scaleY(.35);
+  transform-origin:center;
+  transition:opacity .28s ease,transform .57s ease,visibility 0s linear .3s;
 }
-.scroll-slot .scroll-card.unrolled::before,
-.scroll-slot .scroll-card.unrolled::after { content:none;display:none; }
-.scroll-slot .scroll-card.unrolled .scroll-binding { display:none; }
-.scroll-slot .scroll-card.unrolled .card-paper {
-  height:338px;
-  min-height:0;
-  margin:0;
-  border:2px solid #3c7d69;
-  border-radius:3px;
-  background:
-    linear-gradient(90deg,#75a68a30,transparent 8%,transparent 92%,#75a68a30),
-    url('/paper.svg'),
-    linear-gradient(160deg,#cfebc4,#e9f4d4 50%,#bde1c0);
-  box-shadow:inset 0 8px 14px #487b612c,inset 0 -8px 12px #3a826124;
+.scroll-slot .scroll-card.unrolled .card-paper{height:435px}
+.scroll-slot .scroll-card.unrolled .scroll-art-closed{
+  opacity:0;transform:scaleY(.07) scaleX(.9);
+  transition:transform .37s ease,opacity .25s ease;
 }
-.scroll-slot .scroll-card .scroll-rod {
-  height:0;
-  min-height:0;
-  margin:0;
-  padding:0;
-  opacity:0;
-  visibility:hidden;
-  border:0;
-  box-shadow:none;
-  pointer-events:none;
-  transition:height .5s cubic-bezier(.18,.85,.24,1),opacity .18s ease;
+.scroll-slot .scroll-card.unrolled .scroll-art-open{
+  opacity:1;transform:scale(1);
+  transition:transform .75s cubic-bezier(.17,.83,.22,1),opacity .25s ease .08s;
 }
-.scroll-slot .scroll-card.unrolled .scroll-rod,
-.open-scroll .scroll-rod {
-  height:21px;
-  min-height:0;
-  margin:0 5px;
-  padding:0;
-  opacity:1;
-  visibility:visible;
-  border:2px solid #184451;
-  border-radius:10px;
-  background:linear-gradient(180deg,#659b8f,#a8d1ab 45%,#437c77);
-  box-shadow:inset 0 2px 1px #e4f2d55e,inset 0 -2px 4px #173e4b63,0 2px 2px #071c2c8a;
+.scroll-slot .scroll-card.unrolled .rolled-face{
+  opacity:0;visibility:hidden;
+  transition:opacity .14s ease,visibility 0s linear .14s;
 }
-.scroll-slot .scroll-card.unrolled .scroll-rod::before,
-.scroll-slot .scroll-card.unrolled .scroll-rod::after,
-.open-scroll .scroll-rod::before,
-.open-scroll .scroll-rod::after {
-  content:"";
-  position:absolute;
-  top:-4px;
-  width:15px;
-  height:24px;
-  border-radius:50%;
-  border:2px solid #183c4b;
-  background:radial-gradient(ellipse,#b2d9b1,#477f7c 75%);
+.scroll-slot .scroll-card.unrolled .unrolled-face{
+  opacity:1;visibility:visible;transform:scaleY(1);
+  transition:opacity .35s ease .22s,transform .64s ease,visibility 0s;
+}
+.scroll-slot .unrolled-face .card-meta{
+  display:flex;width:100%;justify-content:space-between;align-items:center;
+  font:700 10px/1.2 var(--font-ink);color:#52725a;letter-spacing:.3px;
+}
+.scroll-slot .unrolled-face .card-number{font-size:14px;color:#52725a}
+.scroll-slot .unrolled-face .card-seal{display:none}
+.scroll-slot .unrolled-face .card-icon{
+  display:block;width:32px;height:32px;flex-shrink:0;
+  color:#42775b;margin:13px 0 8px;stroke-width:1.8;
+}
+.scroll-slot .unrolled-face h3{
+  margin:0;font:400 clamp(24px,2.5vw,31px)/1.22 var(--font-brush);
+  color:#263f35;max-width:100%;letter-spacing:0;
+}
+.scroll-slot .unrolled-face .card-subtitle{
+  font:400 14px/1.45 var(--font-ink);margin:8px auto 12px;
+  color:#49624f;max-width:260px;
+}
+.scroll-slot .unrolled-face .card-bottom{
+  display:flex;width:100%;align-items:center;justify-content:center;gap:8px;
+  margin:0;color:#416b4f;
+}
+.scroll-slot .unrolled-face .card-badge{
+  color:#47775e;font:700 11px/1.2 var(--font-ink);
+  text-align:center;letter-spacing:.2px;
+}
+.scroll-slot .unrolled-face .card-bottom svg{display:none}
+.scroll-slot .unrolled-face .card-instruction{
+  position:static;display:flex;justify-content:center;align-items:center;gap:5px;
+  margin-top:13px;color:#2c735b;font:700 10px/1.15 var(--font-ink);
+  letter-spacing:.25px;
+}
+.scroll-slot .unrolled-face .card-instruction svg{width:14px;height:14px}
+.scroll-slot .roll-up-card{
+  position:absolute;z-index:6;top:89px;right:16%;width:31px;height:31px;
+  border:1px solid #477d66;color:#245b4f;
+  background:#e7edca;box-shadow:0 2px 6px #102d2a36;
+  border-radius:50%;display:grid;place-items:center;padding:0;
+  transition:transform .2s ease,background .2s ease;
+}
+.scroll-slot .roll-up-card:hover{transform:rotate(-15deg);background:#f7f4d9}
+.scroll-slot .roll-up-card svg{width:16px;height:16px}
+.scroll-slot .roll-up-card span{display:none}
+.scroll-slot .roll-up-card[hidden]{display:none}
+/* Modal stays readable and uses matte blue handles like the illustration. */
+.open-scroll .scroll-rod{
+  height:26px;margin:0 9px;border:3px solid #12354d;border-radius:14px;
+  background:linear-gradient(180deg,#367f9e,#28708f 50%,#17425f);
+  box-shadow:inset 0 2px #a6d5bc6b,inset 0 -2px #10395372,0 2px 3px #061e3191;
+}
+.open-scroll .scroll-rod::before,.open-scroll .scroll-rod::after{
+  width:18px;height:30px;top:-5px;border:3px solid #102d3f;border-radius:50%;
+  background:radial-gradient(ellipse,#79bba6,#276d88 67%,#15334c);
   box-shadow:none;
 }
-.scroll-slot .scroll-card.unrolled .scroll-rod::before,
-.open-scroll .scroll-rod::before{left:-5px}
-.scroll-slot .scroll-card.unrolled .scroll-rod::after,
-.open-scroll .scroll-rod::after{left:auto;right:-5px}
-.scroll-slot .unrolled-face {
-  padding:22px 24px 30px;
-}
-.scroll-slot .unrolled-face .card-meta { font-size:11px; }
-.scroll-slot .unrolled-face .card-icon { margin:17px 0 7px;width:34px;height:34px; }
-.scroll-slot .unrolled-face h3 { font-size:clamp(24px,2.5vw,30px);line-height:1.2; }
-.scroll-slot .unrolled-face .card-subtitle { font-size:14px;line-height:1.4;margin:7px 0 11px; }
-.scroll-slot .unrolled-face .card-seal { right:19px;top:59px; }
-.scroll-slot .card-instruction { left:24px;right:12px;bottom:10px;font-size:10px; }
-.scroll-slot .roll-up-card { right:27px;top:23px;background:#d5edca;border:2px solid #356f5c; }
-/* Keep the full-screen article visually consistent. */
-.open-scroll .scroll-rod{height:24px;margin:0 3px;}
-.open-scroll .scroll-rod::before,.open-scroll .scroll-rod::after{height:28px;width:16px}
+.open-scroll .scroll-rod::before{left:-4px}
+.open-scroll .scroll-rod::after{right:-4px}
 .open-scroll .scroll-sheet{
-  margin:0 9px;
-  border-left:2px solid #5a927a8a;
-  border-right:2px solid #5a927a8a;
-  background:
-    linear-gradient(90deg,#7da98d2e,transparent 6%,transparent 94%,#7da98d2e),
-    url('/paper.svg'),
-    linear-gradient(150deg,#d6ecc8,#f0f6dc 45%,#c5e1c2);
+  margin:0 19px;border-left:4px solid #285d6a;border-right:4px solid #285d6a;
+  background:linear-gradient(90deg,#7fa28930,transparent 8%,transparent 92%,#7fa28930),
+    url('/paper.svg'),linear-gradient(140deg,#e6edce,#f3edcf 50%,#d0dbb3);
+}
+@media(max-width:1050px){
+ .scroll-grid{gap:22px;max-width:950px}
+ .scroll-slot .card-paper{height:146px}
+ .scroll-slot .scroll-card.unrolled .card-paper{height:400px}
+ .scroll-slot .rolled-title{font-size:clamp(19px,2.3vw,27px)}
+ .scroll-slot .unrolled-face{padding:6px 11px 15px}
+ .scroll-slot .unrolled-face h3{font-size:clamp(23px,2.7vw,30px)}
+ .scroll-slot .unrolled-face .card-icon{margin-top:7px}
+ .scroll-slot .unrolled-face .card-instruction{margin-top:9px}
 }
 @media(max-width:760px){
-  .scroll-grid {gap:25px 21px;max-width:690px;}
-  .scroll-slot .scroll-card {padding-inline:15px;}
-  .scroll-slot .card-paper {height:110px;}
-  .scroll-slot .rolled-face {inset-inline:32px;}
-  .scroll-slot .rolled-title {font-size:clamp(18px,2.6vw,23px);}
-  .scroll-slot .scroll-card::before{left:0;width:26px;height:53px;}
-  .scroll-slot .scroll-card::after{right:0;width:26px;height:53px;}
-  .scroll-slot .scroll-card.unrolled {padding-inline:12px;}
-  .scroll-slot .scroll-card.unrolled .card-paper {height:335px;}
+ .scroll-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
+ .scroll-slot .card-paper{height:125px}
+ .scroll-slot .scroll-card.unrolled .card-paper{height:326px}
+ .scroll-slot .rolled-face{inset:9% 22%}
+ .scroll-slot .rolled-mark{width:20px;height:20px}
+ .scroll-slot .rolled-mark svg{width:20px;height:20px}
+ .scroll-slot .rolled-title{font-size:clamp(17px,2.7vw,22px)}
+ .scroll-slot .rolled-hint{font-size:8px}
+ .scroll-slot .unrolled-face{padding:3px 5px 8px;inset:20% 15% 19%}
+ .scroll-slot .unrolled-face .card-meta{font-size:8px}
+ .scroll-slot .unrolled-face .card-icon{width:25px;height:25px;margin:5px 0}
+ .scroll-slot .unrolled-face h3{font-size:clamp(19px,3.4vw,26px)}
+ .scroll-slot .unrolled-face .card-subtitle{font-size:11px;margin:5px auto}
+ .scroll-slot .unrolled-face .card-badge{font-size:9px}
+ .scroll-slot .unrolled-face .card-instruction{font-size:8px;margin-top:6px}
+ .scroll-slot .roll-up-card{top:22%;right:14%;width:27px;height:27px}
 }
 @media(max-width:590px){
-  .scroll-grid {grid-template-columns:1fr;max-width:460px;gap:22px;margin-top:29px;}
-  .scroll-slot .scroll-card{padding-inline:22px;}
-  .scroll-slot .card-paper{height:118px;}
-  .scroll-slot .rolled-face{inset-inline:33px;}
-  .scroll-slot .rolled-title{font-size:clamp(21px,5.7vw,28px);}
-  .scroll-slot .scroll-card::before{left:4px;width:29px;height:59px;}
-  .scroll-slot .scroll-card::after{right:4px;width:29px;height:59px;}
-  .scroll-slot .scroll-card.unrolled {padding-inline:16px;}
-  .scroll-slot .scroll-card.unrolled .card-paper {height:328px;}
-  .scroll-slot .unrolled-face {padding:21px 20px 30px;}
-  .scroll-slot .unrolled-face .card-icon {margin-top:15px;}
-  .scroll-slot .unrolled-face h3{font-size:26px;}
-  .scroll-slot .roll-up-card{right:22px;}
+ .scroll-grid{grid-template-columns:1fr;gap:19px;max-width:460px;margin-top:28px}
+ .scroll-slot .card-paper{height:clamp(132px,35vw,177px)}
+ .scroll-slot .scroll-card.unrolled .card-paper{height:clamp(334px,98vw,455px)}
+ .scroll-slot .rolled-title{font-size:clamp(22px,5.8vw,31px)}
+ .scroll-slot .rolled-face{inset:9% 24%}
+ .scroll-slot .rolled-hint{font-size:10px}
+ .scroll-slot .unrolled-face{inset:20% 17% 19%;padding:5px 11px 13px}
+ .scroll-slot .unrolled-face .card-meta{font-size:10px}
+ .scroll-slot .unrolled-face .card-icon{width:31px;height:31px;margin:7px 0}
+ .scroll-slot .unrolled-face h3{font-size:clamp(25px,7vw,33px)}
+ .scroll-slot .unrolled-face .card-subtitle{font-size:13px;margin:6px auto 11px}
+ .scroll-slot .unrolled-face .card-badge{font-size:11px}
+ .scroll-slot .unrolled-face .card-instruction{font-size:9px;margin-top:8px}
+ .scroll-slot .roll-up-card{top:21%;right:16%}
 }
 @media(max-width:375px){
-  .scroll-slot .scroll-card {padding-inline:16px;}
-  .scroll-slot .card-paper{height:121px;}
-  .scroll-slot .rolled-face {inset-inline:29px;padding:7px 0;}
-  .scroll-slot .rolled-title {font-size:21px;}
-  .scroll-slot .rolled-hint {font-size:9px;}
-  .scroll-slot .scroll-card.unrolled .card-paper {height:336px;}
-  .scroll-slot .unrolled-face{padding:19px 15px 32px;}
+ .scroll-slot .card-paper{height:133px}
+ .scroll-slot .rolled-title{font-size:21px}
+ .scroll-slot .unrolled-face{inset:20% 15% 20%;padding:0 7px}
+ .scroll-slot .unrolled-face h3{font-size:24px}
+ .scroll-slot .unrolled-face .card-subtitle{font-size:12px}
+ .scroll-slot .unrolled-face .card-icon{width:25px;height:25px}
+ .scroll-slot .unrolled-face .card-instruction{font-size:8px}
+ .scroll-slot .roll-up-card{right:14%}
 }
 @media(prefers-reduced-motion:reduce){
- .scroll-slot .card-paper,.scroll-slot .scroll-rod{transition:none!important}
+ .scroll-slot .card-paper,.scroll-slot .scroll-art,
+ .scroll-slot .rolled-face,.scroll-slot .unrolled-face{transition:none!important}
 }
-.effects-off .scroll-slot .card-paper,
-.effects-off .scroll-slot .scroll-rod{transition:none!important}
+.effects-off .scroll-slot .card-paper,.effects-off .scroll-slot .scroll-art,
+.effects-off .scroll-slot .rolled-face,.effects-off .scroll-slot .unrolled-face{transition:none!important}
 
