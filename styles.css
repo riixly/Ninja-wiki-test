@@ -859,3 +859,230 @@ footer p,footer button{font-size:12px}
 .effects-off .scroll-slot .card-paper,.effects-off .scroll-slot .scroll-art,
 .effects-off .scroll-slot .rolled-face,.effects-off .scroll-slot .unrolled-face{transition:none!important}
 
+
+/* ============================================================
+   TWO THEMES — BLUE SHINOBI / RED-BLACK AKATSUKI NIGHT
+   The moon button is always visible; the choice persists locally.
+   No new background art: dark mode uses shadows, mist and red light.
+   ============================================================ */
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:24px;position:relative;z-index:8}
+.theme-toggle{
+  display:flex;gap:11px;align-items:center;justify-content:center;
+  min-height:48px;min-width:154px;padding:7px 14px 7px 9px;
+  color:#ddf8ec;
+  border:1px solid rgba(117,218,187,.62);
+  border-radius:999px;
+  background:linear-gradient(145deg,rgba(22,68,91,.94),rgba(7,30,50,.97));
+  box-shadow:0 0 0 3px rgba(102,202,178,.07),0 5px 21px rgba(5,29,49,.35);
+  font:700 11px/1 var(--font-ink);
+  letter-spacing:.7px;white-space:nowrap;
+  transition:background .32s ease,border-color .32s ease,transform .2s ease,box-shadow .32s ease;
+}
+.theme-toggle:hover{transform:translateY(-2px);border-color:#a0f1ca;box-shadow:0 0 24px rgba(91,213,192,.25)}
+.theme-toggle:focus-visible{outline:3px solid #ecfbd1;outline-offset:4px}
+.theme-moon{
+  flex:0 0 auto;width:32px;height:32px;stroke:#c7ffdb;stroke-width:1.8;
+  fill:rgba(168,242,218,.24);filter:drop-shadow(0 0 8px rgba(127,229,220,.39))
+}
+.theme-toggle-label{font-weight:700}
+html[data-theme="akatsuki"]{
+  --bg:#090506;--ink:#faf0f1;--muted:#bb999d;
+  --red:#f04454;--paper:#e9dfcf;--paper-ink:#382b2b;
+  --line:rgba(232,89,109,.22);
+  color-scheme:dark;
+}
+html[data-theme="akatsuki"] body{
+  color:#f7e9e9;
+  background:
+    radial-gradient(ellipse at 80% 26%,rgba(113,9,27,.2),transparent 48%),
+    linear-gradient(180deg,#090506 0%,#130508 57%,#090405 100%);
+}
+html[data-theme="akatsuki"] ::selection{background:#a51c32;color:#ffebeb}
+html[data-theme="akatsuki"] .dojo-scene{
+  height:880px;
+  background:
+    radial-gradient(circle 100px at 72% 30%,#ed435c 0 35%,#a10d29 55%,rgba(116,10,30,.3) 67%,transparent 74%),
+    radial-gradient(ellipse at 70% 32%,rgba(159,12,40,.62),transparent 46%),
+    linear-gradient(180deg,#120609 0%,#1a070d 46%,#090406 100%);
+}
+html[data-theme="akatsuki"] .dojo-scene::before{
+  content:"";position:absolute;inset:0;
+  background:url('/shinobi-village.svg') center 43%/cover no-repeat;
+  filter:grayscale(1) brightness(.25) contrast(1.55);
+  opacity:.47;
+}
+html[data-theme="akatsuki"] .dojo-scene::after{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:340px;
+  background:linear-gradient(transparent,#090506 90%);
+}
+html[data-theme="akatsuki"] .sky-stars{opacity:.27;filter:hue-rotate(140deg)}
+html[data-theme="akatsuki"] .sky-ring{
+  border-color:rgba(246,74,95,.3);
+  box-shadow:0 0 0 42px rgba(230,33,60,.035),0 0 0 88px rgba(213,10,49,.02);
+}
+html[data-theme="akatsuki"] .ridge-glow{
+  background:radial-gradient(ellipse at 70% 44%,rgba(207,20,52,.23),transparent 53%);
+}
+html[data-theme="akatsuki"] #mist{opacity:.85;mix-blend-mode:screen}
+html[data-theme="akatsuki"] .site-header{
+  border-bottom-color:rgba(243,92,101,.25);
+  background:linear-gradient(180deg,rgba(14,4,8,.78),transparent);
+}
+html[data-theme="akatsuki"] .brand{color:#fff1f2;text-shadow:0 3px 14px #0a0307}
+html[data-theme="akatsuki"] .brand-mark{
+  background:rgba(100,15,30,.43);
+  color:#f46679;border-color:rgba(236,65,79,.55);filter:drop-shadow(0 0 9px #a8132857)
+}
+html[data-theme="akatsuki"] .brand small,
+html[data-theme="akatsuki"] .header-stamp{color:#da9da4}
+html[data-theme="akatsuki"] .stamp-dot{
+  background:#f15b6c;box-shadow:0 0 10px #eb2e51a9
+}
+/* Moon becomes red-white and stays just as prominent for switching back. */
+html[data-theme="akatsuki"] .theme-toggle{
+  color:#fff4f5;
+  border-color:#f55f72;
+  background:linear-gradient(135deg,#641020,#260810 80%);
+  box-shadow:0 0 0 3px rgba(224,42,66,.12),0 0 28px rgba(230,29,54,.38),inset 0 1px rgba(255,210,212,.16);
+}
+html[data-theme="akatsuki"] .theme-toggle:hover{
+  border-color:#ffd0d2;box-shadow:0 0 0 3px rgba(255,110,130,.15),0 0 36px rgba(255,39,77,.5)
+}
+html[data-theme="akatsuki"] .theme-moon{
+  stroke:#fff1f2;fill:#ff5b75;filter:drop-shadow(0 0 8px rgba(255,143,158,.75))
+}
+html[data-theme="akatsuki"] .hero-label,
+html[data-theme="akatsuki"] .eyebrow{color:#f07786}
+html[data-theme="akatsuki"] .hero-label span{background:#e34c62}
+html[data-theme="akatsuki"] h1,
+html[data-theme="akatsuki"] h2,
+html[data-theme="akatsuki"] .archive-note h2{color:#fff1f2}
+html[data-theme="akatsuki"] h1 em{
+  color:#ff7182;text-shadow:0 0 35px rgba(245,45,66,.28)
+}
+html[data-theme="akatsuki"] .hero-content>p,
+html[data-theme="akatsuki"] .section-heading>p,
+html[data-theme="akatsuki"] .archive-note p{color:#dcb7bb}
+html[data-theme="akatsuki"] .hero-footnote{color:#d9a4ac}
+html[data-theme="akatsuki"] .pulse-dot{
+  background:#f25264;box-shadow:0 0 14px #ff566b
+}
+html[data-theme="akatsuki"] .hero-cta{
+  background:linear-gradient(140deg,#ff8c97,#ed455b);
+  color:#26090d;border-color:#ffa2a8;
+  box-shadow:0 11px 32px #b30b322b,inset 0 1px #ffe7e777;
+}
+html[data-theme="akatsuki"] .hero-cta:hover{background:#ffacb5;box-shadow:0 15px 37px #b90f3a55}
+html[data-theme="akatsuki"] .hero-art{
+  filter:drop-shadow(0 18px 45px rgba(71,2,20,.65))
+}
+html[data-theme="akatsuki"] .hero-art::before{
+  background:radial-gradient(circle,rgba(122,22,39,.69),rgba(94,14,31,.42) 54%,transparent 72%);
+  box-shadow:0 0 90px #eb1b4d1e
+}
+html[data-theme="akatsuki"] .hero-art::after{border-color:rgba(235,85,100,.25)}
+html[data-theme="akatsuki"] .orbit-outer{
+  border-left-color:#dd4b6480;border-right-color:#dd4b6480;
+  box-shadow:0 0 0 14px rgba(186,30,49,.035),inset 0 0 42px rgba(255,75,87,.1)
+}
+html[data-theme="akatsuki"] .orbit-inner{border-color:rgba(241,95,111,.38)}
+html[data-theme="akatsuki"] .orbit-outer::before,
+html[data-theme="akatsuki"] .orbit-outer::after{background:#ff7183;box-shadow:0 0 17px #f33b60}
+html[data-theme="akatsuki"] .art-crest{
+  background:radial-gradient(circle at 33% 21%,#87273b,#370d1b 50%,#12050d 100%);
+  border-color:#4c1021;
+  box-shadow:0 0 0 1px #ed5e76,0 0 0 18px #320b1bb5,inset 0 0 65px #090106,0 0 55px #ff436625
+}
+html[data-theme="akatsuki"] .art-crest::before{border-color:rgba(255,125,142,.43)}
+html[data-theme="akatsuki"] .art-crest::after{border-color:rgba(241,90,105,.29)}
+html[data-theme="akatsuki"] .crest-character{
+  color:#ff8c9a;text-shadow:0 0 45px #f944788c
+}
+html[data-theme="akatsuki"] .art-crest svg{color:#ef6e7e}
+html[data-theme="akatsuki"] .art-spark{background:#f37f86;box-shadow:0 0 16px #e84261}
+html[data-theme="akatsuki"] .art-caption{color:#d8a6ac}
+html[data-theme="akatsuki"] .library::before{
+  background:linear-gradient(90deg,transparent,#ca314866,transparent)
+}
+html[data-theme="akatsuki"] .library-toolbar{
+  border-color:rgba(230,72,91,.32);
+  background:linear-gradient(100deg,#2b0b14dd,#17070ddc)
+}
+html[data-theme="akatsuki"] .filters button{color:#d7a4af}
+html[data-theme="akatsuki"] .filters button:hover{
+  background:#4a1621;color:#fff1f2
+}
+html[data-theme="akatsuki"] .filters button.active{
+  color:#260408;background:#ff8091;box-shadow:0 3px 19px #c41b3a45
+}
+html[data-theme="akatsuki"] .search{
+  border-color:#8e3446;background:#17070cec
+}
+html[data-theme="akatsuki"] .search svg{color:#f37b8b}
+html[data-theme="akatsuki"] .search input{color:#fff1f4}
+html[data-theme="akatsuki"] .search input::placeholder{color:#b7838d}
+html[data-theme="akatsuki"] .search kbd{border-color:#91475b;color:#ce919f}
+html[data-theme="akatsuki"] .search:focus-within{
+  border-color:#ff8593;box-shadow:0 0 0 2px #ff859325
+}
+html[data-theme="akatsuki"] .archive-note{
+  background:linear-gradient(120deg,rgba(68,17,32,.78),rgba(24,8,15,.92));
+  border-color:#9c354a6c
+}
+html[data-theme="akatsuki"] .archive-note::after{border-color:#e9496026}
+html[data-theme="akatsuki"] .archive-symbol{
+  border-color:#f1708966;color:#f28ea0
+}
+html[data-theme="akatsuki"] .ink-signature{color:#ba6e80;border-color:#d63b5744}
+html[data-theme="akatsuki"] footer{border-color:#9a324b57}
+html[data-theme="akatsuki"] .footer-brand{color:#fff0f2}
+html[data-theme="akatsuki"] .footer-brand span{color:#ff8f9b}
+html[data-theme="akatsuki"] footer p{color:#b58e97}
+html[data-theme="akatsuki"] footer button{
+  color:#f6b8c1;background:#210910;border-color:#91445891
+}
+html[data-theme="akatsuki"] footer button:hover{color:#fff;border-color:#f28498}
+/* Red radio visuals; the audio file is swapped by app.js. */
+html[data-theme="akatsuki"] .music-player{
+  background:linear-gradient(130deg,rgba(57,12,27,.96),rgba(19,5,12,.97) 75%);
+  border-color:rgba(244,92,113,.56);
+  box-shadow:0 17px 48px rgba(11,0,6,.75),inset 0 1px rgba(255,170,180,.12)
+}
+html[data-theme="akatsuki"] .music-player::before{border-color:#e95c791e}
+html[data-theme="akatsuki"] .music-emblem{
+  background:radial-gradient(circle at 35% 29%,#a62a45,#260914 75%);
+  border-color:#eb587a8c;box-shadow:inset 0 0 15px #ff567426
+}
+html[data-theme="akatsuki"] .music-emblem svg{color:#ffacb7}
+html[data-theme="akatsuki"] .music-player.is-playing .music-emblem::after{
+  background:#fc677d;box-shadow:7px -6px #fc677d,14px -2px #fc677d,21px -10px #fc677d
+}
+html[data-theme="akatsuki"] .music-kicker{color:#ff8496}
+html[data-theme="akatsuki"] .music-loop{color:#dca2ad}
+html[data-theme="akatsuki"] .music-title{color:#fff0f2}
+html[data-theme="akatsuki"] .music-timeline span{color:#d4a8b5}
+html[data-theme="akatsuki"] .music-timeline input,
+html[data-theme="akatsuki"] .music-volume-wrap input{
+  background:linear-gradient(90deg,#ff778a 0 var(--fill,0%),#713041 var(--fill,0%) 100%)
+}
+html[data-theme="akatsuki"] .music-play{
+  background:linear-gradient(145deg,#ff9dad,#ef4b67);
+  color:#360b18;box-shadow:0 3px 14px #d93d5e45
+}
+html[data-theme="akatsuki"] .music-mute{color:#f891a0}
+@media(max-width:760px){
+  .header-actions{gap:8px}
+  .theme-toggle{min-height:44px;min-width:126px;gap:7px;padding:5px 10px 5px 6px;font-size:10px}
+  .theme-moon{width:30px;height:30px}
+}
+@media(max-width:460px){
+  .site-header{gap:12px}
+  .theme-toggle{min-width:50px;width:50px;height:50px;padding:7px}
+  .theme-moon{width:32px;height:32px}
+  .theme-toggle-label{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .theme-toggle{transition:none!important}
+}
+.effects-off .theme-toggle{transition:none!important}
+
