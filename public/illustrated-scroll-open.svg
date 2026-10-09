@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="860" viewBox="0 0 860 860" role="img" aria-label="Hand-drawn shinobi scroll unfurled with blue top and bottom rollers and ivory writing surface">
+<defs>
+ <linearGradient id="sheet" x2="1" y2=".15"><stop stop-color="#d8dfb4"/><stop offset=".11" stop-color="#f0e8c9"/><stop offset=".56" stop-color="#f1edcf"/><stop offset=".88" stop-color="#ebe3ba"/><stop offset="1" stop-color="#c5cea5"/></linearGradient>
+ <linearGradient id="roll" x2="0" y2="1"><stop stop-color="#468ba5"/><stop offset=".19" stop-color="#347da0"/><stop offset=".53" stop-color="#286c8b"/><stop offset=".83" stop-color="#1d5676"/><stop offset="1" stop-color="#0e3553"/></linearGradient>
+ <linearGradient id="green" x2="0" y2="1"><stop stop-color="#b9d3a0"/><stop offset=".6" stop-color="#73a67b"/><stop offset="1" stop-color="#527d6e"/></linearGradient>
+ <pattern id="ink" width="42" height="30" patternUnits="userSpaceOnUse"><path d="M4 7l15-3m14 16 6 1M8 24l10-2" stroke="#a4a475" opacity=".12" stroke-width="1"/></pattern>
+</defs>
+<!-- paper sheet behind rollers -->
+<path d="M115 128Q324 119 730 125L728 728Q347 737 120 727L118 128Z" fill="url(#sheet)" stroke="#111d22" stroke-width="7"/>
+<path d="M115 128Q324 119 730 125L728 728Q347 737 120 727L118 128Z" fill="url(#ink)"/>
+<path d="M144 157Q327 151 699 156M143 699Q321 705 705 701" fill="none" stroke="#9aa37e" opacity=".5" stroke-width="3" stroke-dasharray="17 7 31 9"/>
+<path d="M148 186l17-3m494 32 27 4m-546 437 18-3m493-19 34 5M201 240l35-6m442 341 22-4" fill="none" stroke="#977f5e" opacity=".29" stroke-width="3" stroke-linecap="round"/>
+<!-- top roller: horizontal blue cylinder -->
+<path d="M96 67Q103 48 136 48L721 48Q755 48 768 69L770 141Q760 161 733 165L124 164Q100 158 96 135Z" fill="url(#roll)" stroke="#0b1e2b" stroke-width="8" stroke-linejoin="round"/>
+<path d="M128 49L221 49Q231 107 223 164L125 163Q115 100 128 49Z" fill="url(#green)" stroke="#102434" stroke-width="7"/>
+<path d="M132 87L223 88M128 132L221 130" stroke="#0e4656" stroke-width="17"/>
+<path d="M653 49L725 47Q753 49 763 67L767 140Q752 162 725 165L655 164Q644 104 653 49Z" fill="url(#green)" stroke="#102434" stroke-width="7"/>
+<path d="M654 86L766 85M654 129L763 130" stroke="#0d4555" stroke-width="15"/>
+<path d="M223 51Q237 108 224 164M650 51Q637 106 654 166" stroke="#102b38" stroke-width="8" fill="none"/>
+<path d="M90 85L79 88Q68 97 68 116L68 131Q71 146 92 145L98 143L99 87Z" fill="#d8ab51" stroke="#102334" stroke-width="6"/>
+<ellipse cx="67" cy="116" rx="16" ry="22" fill="#317cbb" stroke="#102334" stroke-width="6"/>
+<path d="M769 85L786 87Q795 102 794 126Q792 144 770 144Z" fill="#d9a64a" stroke="#102334" stroke-width="5"/>
+<ellipse cx="795" cy="115" rx="15" ry="21" fill="#2f7daf" stroke="#102334" stroke-width="6"/>
+<!-- bottom roller -->
+<path d="M94 724Q104 710 127 710L735 711Q761 715 769 735L771 799Q760 815 736 814L121 814Q94 811 94 791Z" fill="url(#roll)" stroke="#0a1b2b" stroke-width="8"/>
+<path d="M125 713L223 712Q234 760 223 812L127 812Q114 761 125 713Z" fill="url(#green)" stroke="#102434" stroke-width="7"/>
+<path d="M128 744L227 747M128 788L226 788" stroke="#0b4354" stroke-width="17"/>
+<path d="M653 712L725 711Q757 712 769 736L767 790Q762 812 726 815L652 814Q639 765 653 712Z" fill="url(#green)" stroke="#102434" stroke-width="7"/>
+<path d="M653 743L767 744M652 786L768 786" stroke="#0b4354" stroke-width="17"/>
+<path d="M221 714Q234 758 224 811M655 711Q644 762 653 813" stroke="#102b38" stroke-width="8" fill="none"/>
+<path d="M94 741L77 742Q68 761 70 785L94 789Z" fill="#d9a64a" stroke="#102334" stroke-width="6"/>
+<ellipse cx="68" cy="767" rx="16" ry="22" fill="#317cbb" stroke="#102334" stroke-width="6"/>
+<path d="M770 742L787 743Q797 765 786 792L768 790Z" fill="#d9a64a" stroke="#102334" stroke-width="5"/>
+<ellipse cx="796" cy="766" rx="16" ry="22" fill="#317cbb" stroke="#102334" stroke-width="6"/>
+<!-- illustrated scratch marks -->
+<g stroke="#0c2d41" stroke-width="2.5" opacity=".65" fill="none" stroke-linecap="round"><path d="M295 82l61-4m77 37 74-3m51 660 63 3m-320-16 72 0M164 68l38-3m502 70 27 1"/></g>
+</svg>
