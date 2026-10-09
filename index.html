@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#141b18">
+  <meta name="description" content="Enter the Ninja Destiny dojo. Chunin Exams, progression, skills, fishing, and the Shinobi Fishing Macro v4 for Windows.">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Ninja Destiny Wiki — The Dojo</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-star" viewBox="0 0 48 48"><path d="m24 3 5 15 16 6-16 5-5 16-6-16-15-5 15-6Z"/><circle cx="24" cy="24" r="4"/></symbol>
+    <symbol id="i-scroll" viewBox="0 0 48 48"><path d="M13 9h22v28H13M13 9a4 4 0 1 0-8 0v3h8M35 37a4 4 0 1 0 8 0v-3h-8M13 37a4 4 0 1 1-8 0V9M20 17h8M20 23h8M20 29h5"/></symbol>
+    <symbol id="i-blades" viewBox="0 0 48 48"><path d="m9 5 5 3 21 23-5 5L9 13ZM39 5l-5 3L13 31l5 5 21-23ZM26 30l11 11M11 41l10-11M26 39l12-12M10 27l12 12"/></symbol>
+    <symbol id="i-fish" viewBox="0 0 48 48"><path d="M10 24c9-16 23-16 31 0-8 16-22 16-31 0ZM10 24l-7-8v16ZM22 12l6-6 5 8M21 36l7 6 5-8M28 13c-4 7-4 15 0 22"/><circle cx="33" cy="22" r="1"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 48 48"><path d="M35 7C10 4 7 20 11 31s19 12 25-1c4-8 1-18-1-23ZM11 38l21-25M17 29l-2-11M24 23l11-2"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 48 48"><path d="M34 7A18 18 0 1 0 41 32 19 19 0 0 1 34 7Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol>
+  </defs></svg>
+  <a class="skip-link" href="#scroll-library">Skip to scrolls</a>
+  <div class="dojo-scene" aria-hidden="true">
+    <div class="moon-window"></div><div class="shoji shoji-left"></div><div class="shoji shoji-right"></div>
+    <div class="beam beam-left"></div><div class="beam beam-right"></div><div class="beam beam-top"></div>
+    <div class="lantern lantern-left"><span></span></div><div class="lantern lantern-right"><span></span></div>
+    <div class="floor"></div><div class="vignette"></div>
+  </div>
+  <canvas id="mist" aria-hidden="true"></canvas>
+  <header class="site-header">
+    <a href="#" class="brand" aria-label="Ninja Destiny Wiki homepage"><svg class="brand-mark"><use href="#i-star"/></svg><span>NINJA DESTINY<small>THE UNOFFICIAL WIKI</small></span></a>
+    <nav aria-label="Main navigation"><a class="nav-active" href="#scroll-library">The dojo</a><button type="button" id="nav-guides">Guides</button><button type="button" id="nav-tools">Tools</button></nav>
+    <span class="preview-badge"><span></span> TEST BUILD</span>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-label"><span></span> THE NINJA DESTINY ARCHIVES <span></span></div>
+      <h1 id="hero-title">Knowledge is<br><em>your sharpest weapon.</em></h1>
+      <p>A place to prepare. A place to progress.<br>Choose a scroll and step into the world of Ninja Destiny.</p>
+      <a class="hero-cta" href="#scroll-library">Enter the dojo <svg><use href="#i-arrow"/></svg></a>
+      <div class="hero-seal" aria-hidden="true"><svg><use href="#i-star"/></svg></div>
+    </section>
+    <section class="library" id="scroll-library" aria-labelledby="library-title">
+      <div class="section-heading"><div><div class="eyebrow">THE SCROLL ROOM</div><h2 id="library-title">Pick your path.</h2></div><p>Unroll a guide. Leave a little wiser.</p></div>
+      <div class="library-toolbar">
+        <div class="filters" role="group" aria-label="Filter scrolls"><button class="active" data-filter="all" aria-pressed="true">All scrolls <span>6</span></button><button data-filter="guides" aria-pressed="false">Guides</button><button data-filter="tools" aria-pressed="false">Tools</button><button data-filter="game" aria-pressed="false">The game</button></div>
+        <label class="search"><svg><use href="#i-search"/></svg><input id="search" type="search" placeholder="Find a scroll…" aria-label="Search scrolls" autocomplete="off"><kbd>/</kbd></label>
+      </div>
+      <div id="scroll-grid" class="scroll-grid"></div>
+      <p id="empty" class="empty" hidden>No scrolls match. Try “Chunin” or “fishing”.<button id="reset-search">Show all scrolls</button></p>
+      <p id="result-count" class="sr-only" aria-live="polite"></p>
+      <div class="field-note"><span class="note-number">20</span><p><strong>Your first checkpoint.</strong> Leveling stops at 20 until you pass the Chunin Exams. Prepare your healing before you enter.</p><button id="checkpoint-open">Read the scroll <svg><use href="#i-arrow"/></svg></button></div>
+    </section>
+    <section class="archive-note"><div class="archive-symbol" aria-hidden="true"><svg><use href="#i-leaf"/></svg></div><div><div class="eyebrow">AN ARCHIVE IN THE MAKING</div><h2>Built from time in the game.</h2><p>This dojo is just getting started. More guides will arrive as we gather the details in Ninja Destiny.</p></div><span class="ink-signature">The Dojo</span></section>
+  </main>
+  <footer><a href="#" class="footer-brand">NINJA DESTINY <span>WIKI</span></a><p>Community-made. Not affiliated with MilkTea Party or Roblox.</p><div class="footer-controls"><button type="button" id="sound-toggle" aria-pressed="true">Sound on</button><button type="button" id="motion-toggle" aria-pressed="true">Effects on</button></div></footer>
+  <dialog id="scroll-dialog" aria-labelledby="scroll-title">
+    <div class="open-scroll"><div class="scroll-rod top-rod"></div><article class="scroll-sheet"><header class="article-header"><span id="scroll-category" class="eyebrow"></span><button class="close-scroll" id="close-scroll" aria-label="Close scroll"><svg><use href="#i-close"/></svg></button></header><div class="article-emblem" id="article-emblem" aria-hidden="true"></div><h2 id="scroll-title"></h2><p id="scroll-dek" class="scroll-dek"></p><div class="article-divider"></div><div id="scroll-content"></div><div class="article-end"><span></span><svg><use href="#i-star"/></svg><span></span></div><button class="roll-away" id="roll-away">Seal the scroll <svg><use href="#i-close"/></svg></button></article><div class="scroll-rod bottom-rod"></div></div>
+  </dialog>
+  <div id="smoke-stage" aria-hidden="true"></div>
+  <noscript><div class="noscript"><h2>Chunin Exams — Level 20</h2><p>Use the button at the top of your game screen. Defeat Neji, Rock Lee, then Sasuke to level past 20. Health does not refill between fights. Bring healing scrolls or healing moves.</p><a href="/downloads/Shinobi_Fishing_Macro_v4.zip" download>Download Shinobi Fishing Macro v4 for Windows</a><p>Enable JavaScript to open the animated scrolls.</p></div></noscript>
+</body>
+</html>
