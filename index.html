@@ -11,15 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&amp;family=Kaushan+Script&amp;display=swap" rel="stylesheet">
-  <script>
-    // Restore the user's chosen theme before CSS loads to prevent a blue flash.
-    try {
-      if (localStorage.getItem('ninja-theme') === 'akatsuki') {
-        document.documentElement.dataset.theme = 'akatsuki';
-        document.querySelector('meta[name="theme-color"]').content = '#090506';
-      }
-    } catch {}
-  </script>
+  <script src="/theme-boot.js"></script>
   <link rel="stylesheet" href="/styles.css">
   <script type="module" src="/app.js"></script>
 </head>
