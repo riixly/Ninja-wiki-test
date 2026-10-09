@@ -89,6 +89,8 @@ function openScroll(id, trigger = null, updateHistory = true) {
 function smokeBurst(rect) {
   if (!effects) return;
   const stage = $('#smoke-stage');
+  // Place smoke above the modal's top layer, including during its exit.
+  if (typeof stage.showPopover === 'function' && !stage.matches(':popover-open')) stage.showPopover();
   const originX = rect.left + rect.width / 2;
   const originY = rect.top + Math.min(rect.height * .45, 330);
   const spread = Math.min(rect.width * .65, 320);
@@ -107,7 +109,10 @@ function smokeBurst(rect) {
     };
     for (const [key, value] of Object.entries(values)) puff.style.setProperty(key, value);
     stage.append(puff);
-    setTimeout(() => puff.remove(), 1400);
+    setTimeout(() => {
+      puff.remove();
+      if (!stage.childElementCount && typeof stage.hidePopover === 'function') stage.hidePopover();
+    }, 1400);
   }
 }
 
