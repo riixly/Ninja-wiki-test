@@ -71,6 +71,8 @@ function renderCards() {
       <button type="button" class="scroll-card ${expanded ? 'unrolled' : ''}" data-open="${s.id}" style="animation-delay:${i * 55}ms" aria-expanded="${expanded}" aria-haspopup="${expanded ? 'dialog' : 'false'}" aria-label="${expanded ? `Enlarge ${s.title} in the center` : `Unroll ${s.title} scroll`}">
         <div class="scroll-rod"></div>
         <div class="card-paper">
+          <span class="scroll-binding binding-left" aria-hidden="true"></span>
+          <span class="scroll-binding binding-right" aria-hidden="true"></span>
           <div class="rolled-face">
             <span class="rolled-mark">${icon(s.icon)}</span>
             <span class="rolled-title">${s.title}</span>
