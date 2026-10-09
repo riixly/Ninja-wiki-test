@@ -1,16 +1,16 @@
 # Ninja Destiny Wiki — Dojo test
 
-An independent Ninja Destiny wiki with a cedar dojo, lanterns, parchment scrolls, animated unrolling, smoke when closing, and ambient mist. Works on phones and desktop. No framework dependencies.
+An independent Ninja Destiny wiki with a moonlit shinobi-village theme, hand-inked green fabric scrolls, animated unrolling, smoke when closing, and ambient mist. Works on phones and desktop. No framework dependencies.
 
 The supplied `freesound_community-headband-tighten-96568.mp3` is used for opening and closing scrolls, with a persistent Sound on/off button. It is served as `public/scroll-sound.mp3`. Sound starts from user interaction; browser autoplay rules may suppress it when loading a deep link directly.
 
-Includes the Chunin Exams guide and the original Shinobi Fishing Macro v4 Windows ZIP. Other game sections contain only details from the supplied game description and clearly mark information still being collected.
+The two published scrolls are the verified Chunin Exams guide and Shinobi Fishing Macro v4 for Windows. Unverified starter sections were removed until accurate in-game details are available.
 
 ## Background music (Shinobi Radio)
 
 The floating player displays **naruto funk by altac0untb0y**, loops the uploaded track, and starts at **12% volume** on first visit. Visitors can pause, mute, scrub, or change volume. Because browsers block unprompted audio, playback may begin after the first user interaction instead of immediately.
 
-**One file still needs to be added separately:** Upload the supplied MP3 as `public/naruto funk by altac0untb0y.mp3` using the GitHub repository's **public → Add file → Upload files** option. The source MP3 is not automatically embedded into `index.html` or `app.js`—it is an independent static asset. If the file is missing, the music player will show a pending-audio indicator. Cloudflare will serve it at `/naruto%20funk%20by%20altac0untb0y.mp3` after deployment.
+The uploaded audio is stored at `public/naruto funk by altac0untb0y.mp3` and served at `/naruto%20funk%20by%20altac0untb0y.mp3` after deployment.
 
 ## Cloudflare Pages
 
