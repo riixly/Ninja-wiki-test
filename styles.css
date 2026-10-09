@@ -631,3 +631,309 @@ footer p,footer button{font-size:12px}
   .music-title{font-size:11px}
 }
 
+/* ===========================================================
+   CLOTH-WRAPPED SHINOBI SCROLLS
+   Illustrated cylinders with canvas wraps and patterned bindings.
+   No metallic rails; two-tap expand and smoke interactions retained.
+   =========================================================== */
+.scroll-slot .scroll-card {
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  padding:4px 9px;
+  background:transparent;
+  filter:drop-shadow(0 11px 9px rgba(0,9,24,.42));
+}
+.scroll-slot .scroll-card:focus-visible{outline:3px solid #9cf3b6;outline-offset:4px}
+.scroll-slot .scroll-card:hover{
+  transform:translateY(-5px) rotate(-.5deg);
+  filter:drop-shadow(0 15px 12px rgba(0,10,25,.56));
+}
+.scroll-slot .scroll-card::before,
+.scroll-slot .scroll-card::after{
+  content:"";
+  position:absolute;
+  inset:auto;
+  top:50%;
+  left:-2px;
+  width:30px;
+  height:71px;
+  border:4px solid #102d3c;
+  border-radius:48% 35% 36% 47% / 45% 48% 49% 48%;
+  background:
+    radial-gradient(ellipse at 37% 44%,#c2eed2 0 14%,#6bb8b5 16% 51%,#225e78 57% 79%,#112e47 92%);
+  box-shadow:inset 4px 1px 0 #e4ffcf59,inset -5px -2px 0 #071e3573,2px 3px 0 #071a29;
+  transform:translateY(-50%) rotate(-5deg);
+  z-index:5;
+  pointer-events:none;
+  transition:opacity .22s ease,transform .5s ease;
+}
+.scroll-slot .scroll-card::after{
+  left:auto;
+  right:-2px;
+  background:
+    radial-gradient(ellipse at 46% 40%,#c2eed2 0 14%,#78bdae 16% 51%,#236e7a 57% 79%,#102e45 92%);
+  transform:translateY(-50%) rotate(4deg);
+  border-radius:33% 48% 48% 36% / 50% 46% 46% 48%;
+}
+.scroll-slot .scroll-card.unrolled::before{
+  opacity:0;
+  transform:translate(14px,-50%) scale(.75);
+}
+.scroll-slot .scroll-card.unrolled::after{
+  opacity:0;
+  transform:translate(-14px,-50%) scale(.75);
+}
+/* Closed: horizontal fabric cylinder, not a piece of parchment between rails. */
+.scroll-slot .card-paper{
+  isolation:isolate;
+  position:relative;
+  margin:0 13px;
+  height:128px;
+  min-height:0;
+  padding:0;
+  overflow:hidden;
+  border:4px solid #102e3c;
+  border-radius:35px 32px 34px 30px / 50% 45% 51% 46%;
+  background:
+    linear-gradient(180deg,
+      #d3f5c17d 0%,transparent 15%,transparent 73%,#123f417a 100%),
+    linear-gradient(90deg,
+      #23596f 0%,#4e9d93 17%,#98d7ac 30%,#75b99a 50%,
+      #98d7ac 70%,#4e9d93 83%,#23596f 100%);
+  box-shadow:
+    inset 0 5px 1px #f1ffe04a,
+    inset 0 -11px 10px #113b466b,
+    0 3px 0 #071e2d;
+  transition:
+    height .68s cubic-bezier(.19,1,.22,1),
+    border-radius .6s ease,
+    background-color .3s ease;
+}
+.scroll-slot .card-paper::before{
+  display:block;
+  content:"";
+  position:absolute;
+  inset:7px 15%;
+  z-index:1;
+  border:3px solid #153c41;
+  border-radius:19px 21px 18px 21px / 43% 50% 46% 45%;
+  background:
+    linear-gradient(180deg,#f3ffdf55 0%,transparent 33%,#3d8b7754 100%),
+    repeating-linear-gradient(0deg,transparent 0 11px,#4d8f7810 11px 12px),
+    #a6dabe;
+  box-shadow:inset 0 0 0 2px #d5f2c858,inset 0 4px 6px #235b5741,inset 0 -4px 5px #3268552e;
+  pointer-events:none;
+  transition:inset .58s ease,border-radius .58s ease;
+}
+.scroll-slot .card-paper::after{
+  display:block;
+  content:"";
+  position:absolute;
+  inset:13px 17%;
+  z-index:1;
+  border:1px dashed #356c5d78;
+  border-radius:15px 17px 15px 17px / 38% 46% 44% 42%;
+  pointer-events:none;
+  transition:inset .6s ease,border-radius .6s ease;
+}
+/* Hand-painted binding stripes at each side of the central wrap. */
+.scroll-slot .scroll-binding{
+  display:block;
+  position:absolute;
+  top:3px;
+  bottom:3px;
+  left:6px;
+  width:15%;
+  z-index:1;
+  border:2px solid #143b49;
+  border-radius:18px 5px 6px 18px / 47% 8% 9% 49%;
+  background:
+    linear-gradient(90deg,#0f3c50a8,transparent 24%,transparent 79%,#173b4b8c),
+    repeating-linear-gradient(180deg,
+      #245d79 0 15px,
+      #b8dba8 15px 30px,
+      #247a83 30px 45px,
+      #89d0b3 45px 60px);
+  box-shadow:inset 2px 0 3px #bfeac45e,inset -2px 0 2px #0c3d4482;
+  pointer-events:none;
+  transition:opacity .17s ease,transform .36s ease;
+}
+.scroll-slot .scroll-binding.binding-right{
+  left:auto;
+  right:6px;
+  border-radius:5px 18px 18px 6px / 9% 47% 49% 9%;
+  background:
+    linear-gradient(90deg,#173b4b8c,transparent 22%,transparent 76%,#0f3c50a8),
+    repeating-linear-gradient(180deg,
+      #89d0b3 0 15px,
+      #245d79 15px 30px,
+      #b8dba8 30px 45px,
+      #247a83 45px 60px);
+}
+/* Remove the previous long metal rods while the scroll is rolled shut. */
+.scroll-slot .scroll-card .scroll-rod{
+  height:0;
+  min-height:0;
+  margin:0 16px;
+  padding:0;
+  border:0;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  box-shadow:none;
+  transition:height .43s ease,opacity .3s ease,margin .43s ease;
+}
+.scroll-slot .rolled-face{
+  z-index:3;
+  inset:0 15%;
+  padding:9px 12px;
+  grid-template-columns:34px minmax(0,1fr);
+  grid-template-rows:auto auto;
+  gap:0 8px;
+  min-width:0;
+}
+.scroll-slot .rolled-mark{
+  width:31px;
+  height:31px;
+  border-radius:50%;
+  border:2px solid #2b705e;
+  color:#194d46;
+  background:#c2e9ba;
+  box-shadow:inset 0 2px 2px #ffffff5f;
+}
+.scroll-slot .rolled-mark svg{width:19px;height:19px}
+.scroll-slot .rolled-title{
+  font-family:var(--font-brush);
+  font-size:clamp(18px,1.8vw,24px);
+  line-height:1.16;
+  font-weight:400;
+  color:#153c37;
+  text-shadow:0 1px 0 #edffdc87;
+  overflow-wrap:anywhere;
+  text-align:left;
+}
+.scroll-slot .rolled-hint{
+  font-size:10px;
+  letter-spacing:.25px;
+  color:#376b58;
+  font-weight:700;
+  text-align:left;
+}
+.scroll-slot .roll-up-card{
+  top:29px;
+  right:23px;
+  background:#cfedc6;
+  color:#205b4b;
+  border:2px solid #2c7164;
+}
+/* First click: fabric unrolls into a pale sage writing surface. */
+.scroll-slot .scroll-card.unrolled .card-paper{
+  height:349px;
+  margin:0 10px;
+  border:3px solid #184754;
+  border-radius:9px 11px 10px 8px;
+  background:
+    linear-gradient(90deg,#72aa8b47 0%,transparent 8%,transparent 91%,#72aa8b47 100%),
+    url('/paper.svg'),
+    linear-gradient(160deg,#d0efc4,#e9f8d8 51%,#bce4c2);
+  box-shadow:inset 0 9px 16px #45775f2d,inset 0 -8px 15px #3d8b602e;
+}
+.scroll-slot .scroll-card.unrolled .card-paper::before{
+  inset:6px;
+  border:1px solid #4d8f7191;
+  border-radius:2px;
+  background:transparent;
+  box-shadow:none;
+}
+.scroll-slot .scroll-card.unrolled .card-paper::after{
+  inset:12px;
+  border:1px dashed #3a845c45;
+  border-radius:0;
+}
+.scroll-slot .scroll-card.unrolled .scroll-binding{
+  opacity:0;
+  transform:scaleX(.2);
+  visibility:hidden;
+}
+.scroll-slot .scroll-card.unrolled .scroll-rod,
+.open-scroll .scroll-rod{
+  height:23px;
+  margin:0 5px;
+  padding:0;
+  border:3px solid #102e3e;
+  border-radius:17px;
+  opacity:1;
+  visibility:visible;
+  background:
+    linear-gradient(180deg,#17475b 0%,#7cbda3 23%,#abddad 44%,#91c5a0 68%,#215d5c 100%);
+  box-shadow:inset 0 2px 1px #e7ffcf7d,inset 0 -3px 3px #0c403c71,0 3px 3px #071b2d6b;
+  pointer-events:none;
+}
+.scroll-slot .scroll-card.unrolled .scroll-rod::before,
+.scroll-slot .scroll-card.unrolled .scroll-rod::after,
+.open-scroll .scroll-rod::before,
+.open-scroll .scroll-rod::after{
+  content:"";
+  position:absolute;
+  top:-5px;
+  left:-5px;
+  width:16px;
+  height:27px;
+  border-radius:50%;
+  border:3px solid #102d3e;
+  background:radial-gradient(ellipse,#a5d9b8,#397f83 65%,#1c4866);
+  box-shadow:none;
+}
+.scroll-slot .scroll-card.unrolled .scroll-rod::after,
+.open-scroll .scroll-rod::after{left:auto;right:-5px}
+/* Full-size modal keeps the same matte textile & ink aesthetic. */
+.open-scroll .scroll-rod{height:27px;margin:0 3px}
+.open-scroll .scroll-rod::before,.open-scroll .scroll-rod::after{height:31px;width:18px}
+.open-scroll .scroll-sheet{
+  margin:0 10px;
+  border-left:3px solid #508d7185;
+  border-right:3px solid #508d7185;
+  background:
+    linear-gradient(90deg,#77af8c53,transparent 7%,transparent 93%,#77af8c53),
+    url('/paper.svg'),
+    linear-gradient(150deg,#d2ebc1,#f0f8de 45%,#badfbc);
+}
+@media(max-width:1050px){
+  .scroll-slot .rolled-face{padding-inline:10px}
+  .scroll-slot .rolled-title{font-size:clamp(17px,2.05vw,22px)}
+}
+@media(max-width:760px){
+  .scroll-slot .card-paper{height:126px}
+  .scroll-slot .scroll-card.unrolled .card-paper{height:347px}
+  .scroll-slot .rolled-title{font-size:20px}
+  .scroll-slot .rolled-face{padding:8px 9px;grid-template-columns:29px minmax(0,1fr);gap:0 6px}
+  .scroll-slot .rolled-mark{width:28px;height:28px}
+  .scroll-slot .rolled-mark svg{width:17px;height:17px}
+}
+@media(max-width:590px){
+  .scroll-slot .card-paper{height:121px}
+  .scroll-slot .scroll-card.unrolled .card-paper{height:340px}
+  .scroll-slot .rolled-face{padding:8px 12px;grid-template-columns:34px minmax(0,1fr);gap:0 8px}
+  .scroll-slot .rolled-mark{width:32px;height:32px}
+  .scroll-slot .rolled-mark svg{width:19px;height:19px}
+  .scroll-slot .rolled-title{font-size:clamp(19px,5.7vw,25px)}
+  .scroll-slot .roll-up-card{right:21px}
+}
+@media(max-width:375px){
+  .scroll-slot .scroll-card{padding-inline:5px}
+  .scroll-slot .card-paper{margin-inline:11px;height:123px}
+  .scroll-slot .rolled-face{padding:6px 7px;grid-template-columns:26px minmax(0,1fr);gap:0 5px}
+  .scroll-slot .rolled-mark{width:25px;height:25px}
+  .scroll-slot .rolled-mark svg{width:16px;height:16px}
+  .scroll-slot .rolled-title{font-size:19px}
+  .scroll-slot .rolled-hint{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+  .scroll-slot .scroll-card::before,.scroll-slot .scroll-card::after,
+  .scroll-slot .scroll-binding{transition:none!important}
+}
+.effects-off .scroll-slot .scroll-card::before,
+.effects-off .scroll-slot .scroll-card::after,
+.effects-off .scroll-slot .scroll-binding{transition:none!important}
+
