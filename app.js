@@ -153,13 +153,6 @@ dialog.addEventListener('pointerdown', event => { clickedOutside = event.target 
 dialog.addEventListener('click', event => { if (clickedOutside && event.target === dialog) closeScroll(); clickedOutside = false; });
 search.addEventListener('input', renderCards);
 $('#reset-search').addEventListener('click', () => { search.value = ''; setFilter('all'); search.focus(); });
-for (const [selector, category] of [['#nav-guides', 'guides'], ['#nav-tools', 'tools']]) {
-  $(selector).addEventListener('click', () => {
-    search.value = '';
-    setFilter(category);
-    $('#scroll-library').scrollIntoView({ behavior: effects ? 'smooth' : 'instant' });
-  });
-}
 document.addEventListener('keydown', event => {
   if (event.key === '/' && !dialog.open && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) && !document.activeElement.isContentEditable) {
     event.preventDefault(); search.focus(); search.scrollIntoView({ block: 'center', behavior: effects ? 'smooth' : 'instant' });
