@@ -62,6 +62,30 @@
     <section class="archive-note"><div class="archive-symbol" aria-hidden="true"><svg><use href="#i-leaf"/></svg></div><div><div class="eyebrow">AN ARCHIVE IN THE MAKING</div><h2>Built from time in the game.</h2><p>This archive is just getting started. More guides will arrive as we gather the details in Ninja Destiny.</p></div><span class="ink-signature">The Archive</span></section>
   </main>
   <footer><a href="#" class="footer-brand">NINJA DESTINY <span>WIKI</span></a><p>Community-made. Not affiliated with MilkTea Party or Roblox.</p><div class="footer-controls"><button type="button" id="sound-toggle" aria-pressed="true">Sound on</button><button type="button" id="motion-toggle" aria-pressed="true">Effects on</button></div></footer>
+  <aside class="music-player" aria-label="Background music player">
+    <audio id="site-music" preload="metadata" loop src="/naruto-funk-by-altac0untb0y.mp3"></audio>
+    <div class="music-emblem" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v12" /><circle cx="6" cy="18" r="3"/><circle cx="18" cy="15" r="3"/></svg></div>
+    <div class="music-info">
+      <span class="music-kicker">SHINOBI RADIO <span class="music-loop">↻ LOOP</span></span>
+      <strong class="music-title">naruto funk by altac0untb0y</strong>
+      <div class="music-timeline">
+        <input type="range" id="music-seek" aria-label="Seek through song" min="0" max="100" step="0.1" value="0">
+        <span id="music-clock">0:00 / 0:41</span>
+      </div>
+    </div>
+    <div class="music-actions">
+      <button type="button" id="music-play" class="music-play" aria-label="Play music" title="Play or pause background music">
+        <svg id="music-play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+      </button>
+      <div class="music-volume-wrap">
+        <button type="button" id="music-mute" class="music-mute" aria-label="Mute music" title="Mute or unmute">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm4 4a4 4 0 0 1 0 6m2-8a7 7 0 0 1 0 10"/></svg>
+        </button>
+        <input id="music-volume" type="range" min="0" max="100" value="12" step="1" aria-label="Music volume">
+      </div>
+    </div>
+    <span id="music-status" class="sr-only" role="status"></span>
+  </aside>
   <dialog id="scroll-dialog" aria-labelledby="scroll-title">
     <div class="open-scroll"><div class="scroll-rod top-rod"></div><article class="scroll-sheet"><header class="article-header"><span id="scroll-category" class="eyebrow"></span><button class="close-scroll" id="close-scroll" aria-label="Close scroll"><svg><use href="#i-close"/></svg></button></header><div class="article-emblem" id="article-emblem" aria-hidden="true"></div><h2 id="scroll-title"></h2><p id="scroll-dek" class="scroll-dek"></p><div class="article-divider"></div><div id="scroll-content"></div><div class="article-end"><span></span><svg><use href="#i-star"/></svg><span></span></div><button class="roll-away" id="roll-away">Seal the scroll <svg><use href="#i-close"/></svg></button></article><div class="scroll-rod bottom-rod"></div></div>
   </dialog>
