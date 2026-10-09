@@ -229,6 +229,112 @@ function syncHash() {
 window.addEventListener('hashchange', syncHash);
 window.addEventListener('popstate', syncHash);
 
+
+/* Shinobi Radio — 12% volume on first visit, continuous track looping. */
+const music = $('#site-music');
+const musicPlayer = $('.music-player');
+const musicPlay = $('#music-play');
+const musicPlayIcon = $('#music-play-icon');
+const musicMute = $('#music-mute');
+const musicVolume = $('#music-volume');
+const musicSeek = $('#music-seek');
+const musicClock = $('#music-clock');
+const musicStatus = $('#music-status');
+let pendingMusicAutoplay = true;
+const initialMusicVolume = (() => {
+  try {
+    const saved = localStorage.getItem('ninja-music-volume');
+    return saved !== null && Number.isFinite(Number(saved)) ? Math.min(100, Math.max(0, Number(saved))) : 12;
+  } catch { return 12; }
+})();
+music.volume = initialMusicVolume / 100;
+musicVolume.value = String(initialMusicVolume);
+music.loop = true;
+
+function musicTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
+  const n = Math.floor(seconds);
+  return `${Math.floor(n / 60)}:${String(n % 60).padStart(2, '0')}`;
+}
+function updateMusicUI() {
+  const playing = !music.paused && !music.ended;
+  musicPlayer.classList.toggle('is-playing', playing);
+  musicPlay.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
+  musicPlay.title = playing ? 'Pause background music' : 'Play background music';
+  musicPlayIcon.innerHTML = playing
+    ? '<rect x="7" y="5" width="3" height="14" rx="1"/><rect x="14" y="5" width="3" height="14" rx="1"/>'
+    : '<path d="m8 5 11 7-11 7Z"/>';
+  const silent = music.muted || music.volume === 0;
+  musicMute.setAttribute('aria-label', silent ? 'Unmute music' : 'Mute music');
+  musicMute.title = silent ? 'Unmute background music' : 'Mute background music';
+  musicMute.classList.toggle('is-muted', silent);
+  musicVolume.value = String(Math.round(music.volume * 100));
+  musicVolume.style.setProperty('--fill', `${Math.round(music.volume * 100)}%`);
+}
+function updateMusicProgress() {
+  const duration = Number.isFinite(music.duration) ? music.duration : 41;
+  musicSeek.value = String(duration > 0 ? music.currentTime / duration * 100 : 0);
+  musicSeek.style.setProperty('--fill', `${musicSeek.value}%`);
+  musicClock.textContent = `${musicTime(music.currentTime)} / ${musicTime(duration)}`;
+}
+function startMusic() {
+  if (music.error) return;
+  const result = music.play();
+  if (result && typeof result.catch === 'function') {
+    result.then(() => {
+      pendingMusicAutoplay = false;
+      musicStatus.textContent = 'Music playing on loop.';
+    }).catch(() => {
+      // Most browsers block audio until the visitor interacts with the page.
+      musicStatus.textContent = 'Tap Play to start background music.';
+    });
+  }
+}
+musicPlay.addEventListener('click', () => {
+  pendingMusicAutoplay = false;
+  if (music.paused) startMusic();
+  else music.pause();
+});
+musicMute.addEventListener('click', () => {
+  music.muted = !music.muted;
+  updateMusicUI();
+});
+musicVolume.addEventListener('input', () => {
+  music.volume = Number(musicVolume.value) / 100;
+  if (music.volume > 0) music.muted = false;
+  try { localStorage.setItem('ninja-music-volume', musicVolume.value); } catch {}
+  updateMusicUI();
+});
+musicSeek.addEventListener('input', () => {
+  if (Number.isFinite(music.duration) && music.duration > 0) {
+    music.currentTime = Number(musicSeek.value) / 100 * music.duration;
+    updateMusicProgress();
+  }
+});
+music.addEventListener('play', updateMusicUI);
+music.addEventListener('pause', updateMusicUI);
+music.addEventListener('volumechange', updateMusicUI);
+music.addEventListener('loadedmetadata', updateMusicProgress);
+music.addEventListener('timeupdate', updateMusicProgress);
+music.addEventListener('error', () => {
+  pendingMusicAutoplay = false;
+  musicStatus.textContent = 'Track unavailable: place the MP3 in the public folder.';
+  musicPlayer.classList.add('music-missing');
+  updateMusicUI();
+});
+const tryMusicAfterGesture = event => {
+  if (!pendingMusicAutoplay || event.target.closest('.music-player')) return;
+  startMusic();
+};
+document.addEventListener('pointerdown', tryMusicAfterGesture, { passive: true });
+document.addEventListener('keydown', event => {
+  if (pendingMusicAutoplay && !event.repeat && !['Tab', 'Shift', 'Control', 'Alt', 'Meta'].includes(event.key)) startMusic();
+});
+updateMusicUI();
+updateMusicProgress();
+// Autoplay is best-effort only; audio will wait for a user gesture when blocked.
+startMusic();
+
 // Low-cost drifting mist: capped DPR, 30 fps, paused in background tabs.
 const canvas = $('#mist');
 const context = canvas.getContext('2d');
