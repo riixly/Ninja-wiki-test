@@ -6,6 +6,12 @@ The supplied `freesound_community-headband-tighten-96568.mp3` is used for openin
 
 Includes the Chunin Exams guide and the original Shinobi Fishing Macro v4 Windows ZIP. Other game sections contain only details from the supplied game description and clearly mark information still being collected.
 
+## Background music (Shinobi Radio)
+
+The floating player displays **naruto funk by altac0untb0y**, loops the uploaded track, and starts at **12% volume** on first visit. Visitors can pause, mute, scrub, or change volume. Because browsers block unprompted audio, playback may begin after the first user interaction instead of immediately.
+
+**One file still needs to be added separately:** Upload the supplied MP3 as `public/naruto-funk-by-altac0untb0y.mp3` using the GitHub repository's **public → Add file → Upload files** option. The source MP3 is not automatically embedded into `index.html` or `app.js`—it is an independent static asset. If the file is missing, the music player will show a pending-audio indicator. Cloudflare will serve it at `/naruto-funk-by-altac0untb0y.mp3` after deployment.
+
 ## Cloudflare Pages
 
 Create a **Pages** project, connect this repository, and use:
