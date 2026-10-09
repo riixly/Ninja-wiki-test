@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1000" viewBox="0 0 1800 1000" role="img" aria-label="Moonlit shinobi village in the mountains">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#07132c"/><stop offset=".52" stop-color="#153b68"/><stop offset="1" stop-color="#277f93"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#a5ecf7" stop-opacity=".46"/><stop offset=".48" stop-color="#70c4f9" stop-opacity=".10"/><stop offset="1" stop-color="#70c4f9" stop-opacity="0"/></radialGradient>
+ <linearGradient id="m1" x2="0" y2="1"><stop stop-color="#366f93"/><stop offset="1" stop-color="#173a67"/></linearGradient>
+ <linearGradient id="m2" x2="0" y2="1"><stop stop-color="#183f66"/><stop offset="1" stop-color="#0b2344"/></linearGradient>
+ <linearGradient id="roof" x2="0" y2="1"><stop stop-color="#285881"/><stop offset="1" stop-color="#0b1e3b"/></linearGradient>
+ <linearGradient id="ground" x2="0" y2="1"><stop stop-color="#102d49"/><stop offset="1" stop-color="#07152d"/></linearGradient>
+ <pattern id="rooflines" width="21" height="11" patternUnits="userSpaceOnUse"><path d="M0 10H21M10 0V10" stroke="#b7ddec" stroke-opacity=".12"/></pattern>
+</defs>
+<rect width="1800" height="1000" fill="url(#sky)"/>
+<g fill="#c8ecff" opacity=".65"><circle cx="86" cy="160" r="1.8"/><circle cx="290" cy="108" r="1"/><circle cx="445" cy="235" r="2"/><circle cx="610" cy="83" r="1.5"/><circle cx="795" cy="138" r="1"/><circle cx="975" cy="64" r="2"/><circle cx="1180" cy="183" r="1.4"/><circle cx="1440" cy="120" r="2"/><circle cx="1640" cy="239" r="1.2"/><circle cx="1730" cy="100" r="1.5"/></g>
+<circle cx="1350" cy="255" r="300" fill="url(#glow)"/><circle cx="1350" cy="255" r="84" fill="#bfeefd" opacity=".88"/><circle cx="1334" cy="240" r="75" fill="#d4f7ff" opacity=".33"/>
+<path d="M0 580 144 421 257 513 417 305 557 468 710 351 855 528 1000 365 1155 530 1260 395 1410 547 1542 388 1800 560V1000H0Z" fill="#255a7d" opacity=".55"/>
+<path d="M0 641 100 560 245 607 377 467 530 630 649 506 790 634 900 530 1082 665 1230 501 1380 626 1520 497 1800 646V1000H0Z" fill="url(#m1)" opacity=".85"/>
+<path d="M0 683 148 580 310 676 540 566 765 685 965 602 1155 703 1347 587 1514 676 1665 593 1800 676V1000H0Z" fill="url(#m2)"/>
+<path d="M0 671c230-41 385-15 604 20 280 48 625-26 900-21 142 5 216 22 296 35v295H0Z" fill="#133b59" opacity=".8"/>
+<path d="M0 728Q280 674 500 724T1000 721T1800 743v257H0Z" fill="url(#ground)"/>
+<g opacity=".55" fill="#7bcee9">
+ <path d="M0 598q220-58 360-12t340-20 360 14 320-40 420 23" stroke="#72c4dc" fill="none" stroke-width="12" opacity=".10"/>
+ <path d="M0 651q390-36 640 10t560-13 600 18" stroke="#72c4dc" fill="none" stroke-width="25" opacity=".08"/>
+</g>
+<!-- Village roofs -->
+<g>
+ <g transform="translate(90 664)"><path d="M18 56h232v125H18Z" fill="#112a49"/><path d="M-8 65 122 0 281 65q-21 20-53 12L117 26 20 80Q0 81-8 65Z" fill="url(#roof)"/><path d="M-8 65 122 0 281 65" fill="none" stroke="#91bdd1" stroke-width="5" opacity=".45"/><path d="M32 78h200v60H32Z" fill="url(#rooflines)"/><g fill="#d7eaa1" opacity=".64"><rect x="44" y="112" width="18" height="25"/><rect x="91" y="112" width="18" height="25"/><rect x="170" y="112" width="18" height="25"/></g></g>
+ <g transform="translate(390 609)"><path d="M22 81h275v193H22Z" fill="#0c2443"/><path d="M0 92 152 13 327 92q-17 20-39 10L150 38 27 106Q8 105 0 92Z" fill="#264e71"/><path d="M0 92 152 13 327 92" fill="none" stroke="#70adc6" stroke-width="5" opacity=".6"/><path d="M75 15 152-27 240 15" fill="none" stroke="#143750" stroke-width="18"/><path d="M77 15 152-27 240 15" fill="none" stroke="#93c8d6" stroke-width="3" opacity=".45"/><path d="M55 110h210v105H55Z" fill="url(#rooflines)"/><g fill="#b6dc9a" opacity=".8"><rect x="79" y="153" width="24" height="31"/><rect x="134" y="153" width="24" height="31"/><rect x="208" y="153" width="24" height="31"/></g></g>
+ <g transform="translate(780 700)"><path d="M18 45h305v175H18Z" fill="#102a49"/><path d="M-18 52 160-19 365 52Q350 76 317 65L162 10 18 72Q0 78-18 52Z" fill="#1e4b6b"/><path d="M-18 52 160-19 365 52" fill="none" stroke="#5ca8c2" opacity=".45" stroke-width="5"/><g fill="#d4ea91" opacity=".65"><rect x="68" y="111" width="22" height="30"/><rect x="136" y="111" width="22" height="30"/><rect x="260" y="111" width="22" height="30"/></g></g>
+ <g transform="translate(1150 640)"><path d="M14 66h350v223H14Z" fill="#0c2340"/><path d="M-13 69 168-21 392 69q-21 26-51 16L165 11 13 88Q-2 88-13 69Z" fill="#285775"/><path d="M-13 69 168-21 392 69" stroke="#81bcd2" stroke-width="5" fill="none" opacity=".48"/><path d="M48 91h295v90H48Z" fill="url(#rooflines)"/><g fill="#d4eb9b" opacity=".7"><rect x="68" y="132" width="22" height="28"/><rect x="130" y="132" width="22" height="28"/><rect x="255" y="132" width="22" height="28"/></g></g>
+</g>
+<!-- Torii and roofline -->
+<g transform="translate(1535 560)" fill="#071e37"><path d="M28 85h16v265H28ZM178 85h16v265h-16Z"/><path d="M-3 84h226v19H-3Z"/><path d="M-27 39q136 34 275-4l-12 26q-128 38-252 2Z"/><path d="M20 122h189v11H20Z"/></g>
+<path d="M0 885q136-60 273-9t273-21 280 23 300-29 290 17 384 9V1000H0Z" fill="#07162e"/>
+<g fill="#06152c"><path d="M0 670q38 20 61 115l-12 215H0Z"/><path d="M1800 661q-48 27-75 139l15 200h60Z"/><path d="M88 720 68 590l-24 130 21-52-12 161h40Z"/><path d="M1678 730 1658 571l-22 160 19-66-10 185h46Z"/></g>
+</svg>
