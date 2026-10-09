@@ -68,11 +68,11 @@ function renderCards() {
   grid.innerHTML = matches.map((s, i) => {
     const expanded = inlineOpen.has(s.id);
     return `<div class="scroll-slot ${expanded ? 'is-unrolled' : ''}">
+
       <button type="button" class="scroll-card ${expanded ? 'unrolled' : ''}" data-open="${s.id}" style="animation-delay:${i * 55}ms" aria-expanded="${expanded}" aria-haspopup="${expanded ? 'dialog' : 'false'}" aria-label="${expanded ? `Enlarge ${s.title} in the center` : `Unroll ${s.title} scroll`}">
-        <div class="scroll-rod"></div>
         <div class="card-paper">
-          <span class="scroll-binding binding-left" aria-hidden="true"></span>
-          <span class="scroll-binding binding-right" aria-hidden="true"></span>
+          <span class="scroll-art scroll-art-closed" aria-hidden="true"></span>
+          <span class="scroll-art scroll-art-open" aria-hidden="true"></span>
           <div class="rolled-face">
             <span class="rolled-mark">${icon(s.icon)}</span>
             <span class="rolled-title">${s.title}</span>
@@ -87,7 +87,6 @@ function renderCards() {
             <span class="card-instruction">TAP AGAIN TO ENLARGE ${icon('arrow')}</span>
           </div>
         </div>
-        <div class="scroll-rod"></div>
       </button>
       <button type="button" class="roll-up-card" data-roll-up="${s.id}" aria-label="Roll ${s.title} closed" ${expanded ? '' : 'hidden'}>${icon('close')}<span>Roll closed</span></button>
     </div>`;
