@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="336" viewBox="0 0 1140 336" role="img" aria-label="Hand-drawn blue shinobi scroll, rolled closed">
+<defs>
+ <linearGradient id="body" x2="0" y2="1"><stop stop-color="#367e9f"/><stop offset=".15" stop-color="#317a98"/><stop offset=".48" stop-color="#246381"/><stop offset=".79" stop-color="#205574"/><stop offset="1" stop-color="#123b57"/></linearGradient>
+ <linearGradient id="green" x2="0" y2="1"><stop stop-color="#b3d8a1"/><stop offset=".35" stop-color="#79ac78"/><stop offset=".65" stop-color="#649979"/><stop offset="1" stop-color="#3b6a63"/></linearGradient>
+ <linearGradient id="cap" x2="0" y2="1"><stop stop-color="#4e91ac"/><stop offset=".5" stop-color="#224c6b"/><stop offset="1" stop-color="#122a48"/></linearGradient>
+ <pattern id="fibers" width="42" height="27" patternUnits="userSpaceOnUse"><path d="M3 5l10-2m15 10 9 1M7 21l8-1" stroke="#c7e1cb" stroke-width="1" opacity=".10"/></pattern>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".06 .12" numOctaves="2" seed="9" stitchTiles="stitch" result="n"/><feColorMatrix in="n" type="saturate" values="0" result="g"/><feComponentTransfer in="g"><feFuncA type="linear" slope=".095"/></feComponentTransfer></filter>
+</defs>
+<!-- off-center hand ink shadow -->
+<path d="M77 89Q95 59 144 56L992 52Q1049 57 1062 92L1064 251Q1051 287 992 290L149 288Q95 289 78 261Z" fill="#030d1a" opacity=".24" transform="translate(4 11)"/>
+<!-- carved wooden core tabs -->
+<path d="M67 126Q42 122 37 149L37 197Q41 221 67 216L97 210V130Z" fill="#51745b" stroke="#081f2b" stroke-width="8" stroke-linejoin="round"/>
+<path d="M1073 125Q1101 127 1105 150L1105 201Q1101 222 1071 217L1041 211V129Z" fill="#527657" stroke="#081f2b" stroke-width="8" stroke-linejoin="round"/>
+<path d="M43 155L45 194M56 148L54 207M1090 152L1091 210" fill="none" stroke="#9aba75" stroke-width="3" opacity=".4" stroke-linecap="round"/>
+<!-- rolled body, blue wrapping all the way across the center -->
+<path d="M109 73Q130 65 179 65L976 65Q1025 65 1041 85Q1056 109 1059 154L1056 224Q1052 267 1024 273Q994 279 957 279L160 277Q112 274 102 252Q90 227 88 175Q87 115 109 73Z" fill="url(#body)" stroke="#081b27" stroke-width="9" stroke-linejoin="round"/>
+<path d="M114 85Q275 70 580 76Q805 79 1017 80" fill="none" stroke="#a7d7c4" opacity=".24" stroke-width="7" stroke-linecap="round"/>
+<path d="M112 259Q490 271 1026 257" fill="none" stroke="#081b2e" opacity=".29" stroke-width="9" stroke-linecap="round"/>
+<path d="M109 73Q130 65 179 65L976 65Q1025 65 1041 85Q1056 109 1059 154L1056 224Q1052 267 1024 273Q994 279 957 279L160 277Q112 274 102 252Q90 227 88 175Q87 115 109 73Z" fill="url(#fibers)"/>
+<!-- side bindings: illustrated cloth, matte navy/green/cream stripes -->
+<path d="M126 70Q158 62 245 64Q260 168 245 279L143 277Q123 183 126 70Z" fill="url(#green)" stroke="#091f2b" stroke-width="7"/>
+<path d="M142 114L245 115M140 169L249 172M140 229L246 231" stroke="#123950" stroke-width="10"/>
+<path d="M146 123L241 124M143 180L243 182M145 241L237 242" stroke="#397d8e" stroke-width="23"/>
+<path d="M905 66L992 66Q1027 69 1042 90Q1053 145 1048 221Q1045 265 1016 272L905 277Q892 172 905 66Z" fill="url(#green)" stroke="#091f2b" stroke-width="7"/>
+<path d="M904 114L1047 113M904 168L1050 167M904 228L1044 228" stroke="#123950" stroke-width="10"/>
+<path d="M909 125L1046 125M909 179L1045 178M909 239L1039 237" stroke="#397d8e" stroke-width="22"/>
+<!-- bands separating blue wrap from patterned cuffs -->
+<path d="M253 66Q265 175 254 278L279 278Q291 175 282 68Z" fill="#09525d" stroke="#071a27" stroke-width="6"/>
+<path d="M872 69Q859 175 869 278L897 276Q886 174 897 67Z" fill="#0b5360" stroke="#071a27" stroke-width="6"/>
+<!-- black ink hatching across the blue surface -->
+<g fill="none" stroke="#0b2b40" stroke-width="2.8" stroke-linecap="round" opacity=".7"><path d="M305 91l54-7m8 4 19-2m130 8 75-5m70 150 67-8m-377 19 101-4m330-141 37 5m-145 25 22-3m-222 6 45-5"/></g>
+<g fill="none" stroke="#7fc3c1" stroke-width="2" stroke-linecap="round" opacity=".34"><path d="M366 115l83-5m278 7 44 1m-301 110 62-2m-161-27 32 0m357 13 38-4"/></g>
+<!-- lightly imperfect ink contour -->
+<path d="M123 77Q111 100 109 122M103 217Q110 257 128 268M1047 116Q1052 166 1048 201" fill="none" stroke="#071825" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+</svg>
