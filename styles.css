@@ -504,3 +504,130 @@ body{padding-bottom:100px}
 @media(prefers-reduced-motion:reduce){.music-player.is-playing .music-emblem:after{animation:none}}
 .effects-off .music-player.is-playing .music-emblem:after{animation:none}
 
+/* Hand-inked typography — brush titles, legible handwritten field notes. */
+:root{
+  --font-brush:"Kaushan Script","Brush Script MT",cursive;
+  --font-ink:"Kalam","Segoe Print","Comic Sans MS",cursive;
+  font-family:var(--font-ink);
+}
+body,button,input,textarea,select{
+  font-family:var(--font-ink);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+button,input,textarea,select{font-kerning:normal}
+h1,h2,h3,
+.brand,.footer-brand,
+.section-heading h2,.archive-note h2,
+.scroll-card h3,.rolled-title,
+.scroll-sheet h2,.scroll-sheet h3,
+.field-note strong,.ink-signature,.boss-order strong,
+.paper-alert strong,.download-button span{
+  font-family:var(--font-brush);
+  font-weight:400;
+  letter-spacing:0;
+}
+h1{
+  font-size:clamp(50px,5.65vw,82px);
+  line-height:1.26;
+  letter-spacing:-.7px;
+  margin-top:21px;
+  margin-bottom:19px;
+}
+h1 em{font-family:inherit;font-style:normal;letter-spacing:-.7px}
+.section-heading h2{font-size:clamp(31px,3.2vw,42px);line-height:1.35}
+.archive-note h2{font-size:27px;line-height:1.42}
+.brand{font-size:22px;letter-spacing:.1px;line-height:1.12;font-weight:400}
+.brand small{font-family:var(--font-ink);font-size:10px;font-weight:700;letter-spacing:1.25px;line-height:1.35}
+.footer-brand{font-size:17px;letter-spacing:.2px}
+.hero-content>p,.archive-note p,.section-heading>p{font-size:16px;line-height:1.8}
+.hero-label,.eyebrow,.hero-footnote,.header-stamp{font-family:var(--font-ink);font-weight:700;letter-spacing:1.1px}
+.hero-label{font-size:12px}
+.hero-cta{font-size:14px;letter-spacing:0;font-weight:700;padding-block:15px}
+.filters button{font-size:14px;font-weight:700}
+.search input{font-size:15px}
+.search kbd{font-family:var(--font-ink);font-size:12px}
+.rolled-title{font-size:clamp(19px,2vw,24px);line-height:1.28}
+.rolled-hint,.card-instruction,.card-badge,.card-meta,.card-number{
+  font-family:var(--font-ink);
+  font-weight:700;
+  letter-spacing:.25px;
+}
+.rolled-hint{font-size:11px;letter-spacing:.5px}
+.card-instruction{font-size:11px;bottom:12px;letter-spacing:.4px}
+.rolled-face{gap:3px 12px}
+.scroll-slot .card-paper{height:118px}
+.scroll-slot .scroll-card.unrolled .card-paper{height:343px}
+.scroll-card .unrolled-face h3{
+  font-size:clamp(24px,2.35vw,30px);
+  line-height:1.3;
+  font-weight:400;
+  letter-spacing:0;
+}
+.unrolled-face .card-subtitle{font-family:var(--font-ink);font-size:14px;line-height:1.45}
+.unrolled-face .card-meta{font-size:11px}
+.unrolled-face .card-badge{font-size:11px}
+.unrolled-face .card-icon{margin:19px 0 8px}
+.unrolled-face .card-seal{top:60px}
+.field-note strong{font-size:23px}
+.field-note p{font-size:15px}
+.field-note button{font-size:14px}
+.note-number{font-family:var(--font-brush);font-size:43px}
+.scroll-sheet h2{
+  font-size:clamp(34px,4vw,45px);
+  line-height:1.29;
+  letter-spacing:0;
+}
+.scroll-sheet h3{font-size:27px;line-height:1.35;margin-top:24px}
+.scroll-sheet p,.steps{font-family:var(--font-ink);font-size:16px;line-height:1.75}
+.scroll-dek{font-family:var(--font-ink);font-size:17px;line-height:1.65;font-style:normal}
+.article-header .eyebrow{font-size:12px;letter-spacing:.5px}
+.paper-alert strong{font-size:21px}
+.paper-alert p{font-size:15px}
+.boss-order li>span{font-family:var(--font-brush);font-size:27px}
+.boss-order strong{font-size:21px;line-height:1.3;margin-top:9px}
+.boss-order small{font-family:var(--font-ink);font-size:12px}
+.download-button span{font-size:22px}
+.download-button small{font-family:var(--font-ink);font-size:12px;letter-spacing:.1px}
+.roll-away{font-family:var(--font-ink);font-size:13px;letter-spacing:.25px}
+.paper-note,.paper-link{font-size:14px}
+.music-title{font-family:var(--font-ink);font-weight:700;font-size:14px;line-height:1.3}
+.music-kicker{font-family:var(--font-ink);font-weight:700;font-size:10px;letter-spacing:.7px}
+.music-timeline span{font-family:var(--font-ink);font-size:11px}
+footer p,footer button{font-size:12px}
+@media(max-width:760px){
+  .brand{font-size:19px;letter-spacing:0}
+  .brand small{font-size:8px}
+  h1{font-size:clamp(43px,6vw,57px);line-height:1.22}
+  .section-heading h2{font-size:33px}
+  .scroll-slot .card-paper{height:114px}
+  .scroll-slot .scroll-card.unrolled .card-paper{height:338px}
+  .rolled-title{font-size:22px}
+  .scroll-card .unrolled-face h3{font-size:27px}
+  .unrolled-face .card-subtitle{font-size:13px}
+  .unrolled-face .card-icon{margin-top:18px}
+}
+@media(max-width:590px){
+  h1{font-size:clamp(39px,9vw,55px);line-height:1.22}
+  .hero-content>p{font-size:15px}
+  .hero-label{font-size:10px}
+  .section-heading h2{font-size:31px}
+  .scroll-slot .card-paper{height:114px}
+  .scroll-slot .scroll-card.unrolled .card-paper{height:328px}
+  .rolled-title{font-size:23px}
+  .scroll-card .unrolled-face h3{font-size:28px}
+  .unrolled-face .card-icon{margin-top:16px}
+  .unrolled-face .card-subtitle{font-size:13px}
+  .scroll-sheet h2{font-size:35px}
+  .scroll-sheet h3{font-size:24px}
+  .scroll-sheet p,.steps{font-size:15px}
+  .music-title{font-size:12px}
+}
+@media(max-width:375px){
+  h1{font-size:38px}
+  .rolled-title{font-size:20px}
+  .scroll-card .unrolled-face h3{font-size:25px}
+  .scroll-sheet h2{font-size:32px}
+  .music-title{font-size:11px}
+}
+
