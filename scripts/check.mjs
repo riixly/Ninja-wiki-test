@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { scrolls } from '../content.js';
 
 // Verify content, referenced assets, and syntax before deploying the static site.
-for (const file of ['app.js', 'content.js', 'scripts/build.mjs']) {
+for (const file of ['app.js', 'content.js', 'scripts/build.mjs', 'theme-boot.js', 'entrance.js']) {
   const result = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
 }
@@ -24,6 +24,20 @@ for (const match of app.matchAll(/\$\('#([^']+)'\)/g)) {
 const styles = await readFile('styles.css', 'utf8');
 for (const match of styles.matchAll(/url\('\/(.*?)'\)/g)) await access(`public/${match[1]}`);
 for (const path of ['public/favicon.svg', 'public/scroll-sound.mp3', 'public/downloads/Shinobi_Fishing_Macro_v4.zip']) await access(path);
+// The entrance must exist, ship with the build, and prevent music before Begin.
+for (const path of ['entrance.css', 'entrance.js']) await access(path);
+assert(html.includes('id="entrance"') && html.includes('id="entrance-begin"'), 'Missing entrance UI');
+assert(html.includes('Begin Your Ninja Destiny'), 'Missing entrance button label');
+assert(html.includes('src="/entrance.js"'), 'Missing entrance script');
+assert(app.includes("if (window.ninjaEntranceUnlocked !== true) return;"), 'Music is not entrance-gated');
+assert(app.includes("document.addEventListener('ninja:begin'"), 'Entrance does not unlock soundtrack');
+assert(app.includes("document.addEventListener('ninja:entered', syncHash)"), 'Deep links do not resume after entrance');
+const entrance = await readFile('entrance.js', 'utf8');
+assert(entrance.includes("window.ninjaEntranceUnlocked = false"), 'Entrance must begin locked');
+assert(entrance.includes("document.dispatchEvent(new Event('ninja:begin'))"), 'Begin must start music by click');
+const build = await readFile('scripts/build.mjs', 'utf8');
+assert(build.includes("'entrance.css', 'entrance.js'"), 'Entrance files missing from deployment');
+
 const exam = scrolls.find(s => s.id === 'chunin-exams');
 assert(exam.body.indexOf('Neji') < exam.body.indexOf('Rock Lee') && exam.body.indexOf('Rock Lee') < exam.body.indexOf('Sasuke'));
 assert(exam.body.includes('health does not refill'));
