@@ -38,12 +38,58 @@ let effects = preference && !motionQuery.matches;
 
 const icon = (name, className = '') => `<svg class="${className}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 
+const inlineOpen = new Set();
+
+function setCardExpanded(card, expanded) {
+  const id = card.dataset.open;
+  const item = scrolls.find(s => s.id === id);
+  if (!item) return;
+  const slot = card.closest('.scroll-slot');
+  if (expanded) inlineOpen.add(id);
+  else inlineOpen.delete(id);
+  card.classList.toggle('unrolled', expanded);
+  slot.classList.toggle('is-unrolled', expanded);
+  card.setAttribute('aria-expanded', String(expanded));
+  card.setAttribute('aria-haspopup', expanded ? 'dialog' : 'false');
+  card.setAttribute('aria-label', expanded ? `Enlarge ${item.title} in the center` : `Unroll ${item.title} scroll`);
+  slot.querySelector('.roll-up-card').hidden = !expanded;
+  if (expanded) slot.classList.remove('poofing');
+  else if (effects) {
+    slot.classList.remove('poofing');
+    void slot.offsetWidth;
+    slot.classList.add('poofing');
+  }
+  playScrollSound();
+}
+
 function renderCards() {
   const query = search.value.toLowerCase().trim();
   const matches = scrolls.filter(s => (filter === 'all' || s.category === filter) && `${s.title} ${s.label} ${s.subtitle} ${s.keywords}`.toLowerCase().includes(query));
-  grid.innerHTML = matches.map((s, i) => `<button class="scroll-card" data-open="${s.id}" style="animation-delay:${i * 55}ms" aria-haspopup="dialog" aria-label="Open ${s.title} scroll">
-    <div class="scroll-rod"></div><div class="card-paper"><div class="card-meta"><span>${s.label}</span><span class="card-number">${s.number}</span></div><span class="card-seal">${icon('star')}</span>${icon(s.icon, 'card-icon')}<h3>${s.title}</h3><p class="card-subtitle">${s.subtitle}</p><div class="card-bottom"><span class="card-badge">${s.badge}</span>${icon('arrow')}</div></div><div class="scroll-rod"></div>
-  </button>`).join('');
+  grid.innerHTML = matches.map((s, i) => {
+    const expanded = inlineOpen.has(s.id);
+    return `<div class="scroll-slot ${expanded ? 'is-unrolled' : ''}">
+      <button type="button" class="scroll-card ${expanded ? 'unrolled' : ''}" data-open="${s.id}" style="animation-delay:${i * 55}ms" aria-expanded="${expanded}" aria-haspopup="${expanded ? 'dialog' : 'false'}" aria-label="${expanded ? `Enlarge ${s.title} in the center` : `Unroll ${s.title} scroll`}">
+        <div class="scroll-rod"></div>
+        <div class="card-paper">
+          <div class="rolled-face">
+            <span class="rolled-mark">${icon(s.icon)}</span>
+            <span class="rolled-title">${s.title}</span>
+            <span class="rolled-hint">TAP TO UNROLL</span>
+          </div>
+          <div class="unrolled-face">
+            <div class="card-meta"><span>${s.label}</span><span class="card-number">${s.number}</span></div>
+            <span class="card-seal">${icon('star')}</span>
+            ${icon(s.icon, 'card-icon')}
+            <h3>${s.title}</h3><p class="card-subtitle">${s.subtitle}</p>
+            <div class="card-bottom"><span class="card-badge">${s.badge}</span>${icon('arrow')}</div>
+            <span class="card-instruction">TAP AGAIN TO ENLARGE ${icon('arrow')}</span>
+          </div>
+        </div>
+        <div class="scroll-rod"></div>
+      </button>
+      <button type="button" class="roll-up-card" data-roll-up="${s.id}" aria-label="Roll ${s.title} closed" ${expanded ? '' : 'hidden'}>${icon('close')}<span>Roll closed</span></button>
+    </div>`;
+  }).join('');
   $('#empty').hidden = matches.length > 0;
   $('#result-count').textContent = `${matches.length} ${matches.length === 1 ? 'scroll' : 'scrolls'} found.`;
 }
@@ -138,15 +184,31 @@ function closeScroll(updateHistory = true) {
   }, effects ? 230 : 0);
 }
 
-document.addEventListener('click', (event) => {
+document.addEventListener('click', function eventClick(event) {
+  const rollButton = event.target.closest('[data-roll-up]');
+  if (rollButton) {
+    const card = Array.from(grid.querySelectorAll('.scroll-card')).find(el => el.dataset.open === rollButton.dataset.rollUp);
+    if (card) {
+      setCardExpanded(card, false);
+      card.focus({ preventScroll: true });
+    }
+    return;
+  }
   const opener = event.target.closest('[data-open]');
-  if (opener) openScroll(opener.dataset.open, opener);
+  if (opener) {
+    if (opener.matches('.scroll-card')) {
+      if (inlineOpen.has(opener.dataset.open)) openScroll(opener.dataset.open, opener);
+      else setCardExpanded(opener, true);
+    } else {
+      openScroll(opener.dataset.open, opener);
+    }
+    return;
+  }
   const filterButton = event.target.closest('[data-filter]');
   if (filterButton) setFilter(filterButton.dataset.filter);
 });
 $('#close-scroll').addEventListener('click', () => closeScroll());
 $('#roll-away').addEventListener('click', () => closeScroll());
-$('#checkpoint-open').addEventListener('click', event => openScroll('chunin-exams', event.currentTarget));
 dialog.addEventListener('cancel', event => { event.preventDefault(); closeScroll(); });
 let clickedOutside = false;
 dialog.addEventListener('pointerdown', event => { clickedOutside = event.target === dialog; });
