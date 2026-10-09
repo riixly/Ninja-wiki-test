@@ -6,6 +6,12 @@ The supplied `freesound_community-headband-tighten-96568.mp3` is used for openin
 
 The two published scrolls are the verified Chunin Exams guide and Shinobi Fishing Macro v4 for Windows. Unverified starter sections were removed until accurate in-game details are available.
 
+## Theme toggle
+
+The prominent moon button in the header switches between the regular blue shinobi theme and a red-and-black Akatsuki night theme. The selected theme is stored in the browser as `ninja-theme` and restored on return visits by `theme-boot.js` before CSS loads.
+
+Each theme has its own looping soundtrack: blue plays `naruto funk by altac0untb0y.mp3`, while Akatsuki night plays `public/Naruto_Shippuden_OST_-_Akatsuki_Theme_2_(mp3.pm).mp3`. Switching modes switches the current music player track while retaining its volume setting and controls. As usual, playback depends on browser autoplay rules. No image asset is required for the red/black scene.
+
 ## Background music (Shinobi Radio)
 
 The floating player displays **naruto funk by altac0untb0y**, loops the uploaded track, and starts at **12% volume** on first visit. Visitors can pause, mute, scrub, or change volume. Because browsers block unprompted audio, playback may begin after the first user interaction instead of immediately.
