@@ -740,6 +740,8 @@ footer p,footer button{font-size:12px}
     #d0e5b5 0 17%,#7cb7aa 19% 40%,#39677c 45% 74%,#163d55 76%);
   box-shadow:inset -3px -1px 4px #0b2c3b6e,1px 2px 0 #071b2b;
   transform:translateY(-50%);
+  filter:none;
+  bottom:auto;
   pointer-events:none;
   transition:none;
 }
